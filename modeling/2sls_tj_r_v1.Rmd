@@ -1,0 +1,35 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+# load libraries
+```
+
+# Read in data
+
+```{r}
+# local or gdrive
+path_source = 'local'
+
+if (path_source == 'gdrive'){
+  #from google.colab import drive
+  drive.mount('/content/gdrive')
+  data_path = '/content/gdrive/MyDrive/Classes/W210_capstone/W210_Capstone/Data'
+  #env_path = '/content/gdrive/MyDrive/.env'
+  
+} else if (path_source == 'local'){
+  data_path = '/Users/tj/trevorj@berkeley.edu - Google Drive/My Drive/Classes/W210_capstone/W210_Capstone/Data'
+  #env_path = '/content/gdrive/MyDrive/.env'
+
+}else if (path_source == 'work'){
+  data_path = '/Users/trevorjohnson/trevorj@berkeley.edu - Google Drive/My Drive/Classes/W210_capstone/W210_Capstone/Data'
+}
+```
+
+
+
+
