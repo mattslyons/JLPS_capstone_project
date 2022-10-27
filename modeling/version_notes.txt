@@ -1,3 +1,4 @@
 2sls_tj
 - v5: This contains the results that were used at the Stanford symposium. It includes our baseline model results for the primary 3 medical outcomes.  
 - v6: Including the updated diagnoses for control. 
+- v7: Including functionality to save fitted models, save one hot encoder, save dataframe with predicted results. Also simplifying the script a lot. 
