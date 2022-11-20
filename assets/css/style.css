@@ -908,7 +908,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(40, 58, 90, 0.9), rgba(40, 58, 90, 0.9)), url("../img/cta-bg.jpg") fixed center center;
+  background: linear-gradient(rgba(40, 58, 90, 0.9), rgba(40, 58, 90, 0.9)), url("../img/group/team_sather_gate.png") fixed center center;
   background-size: cover;
   padding: 120px 0;
 }
@@ -1117,7 +1117,14 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
-.team .member {
+
+.team_photo_background {
+  background: linear-gradient(rgba(40, 58, 90, 0.9), rgba(40, 58, 90, 0.9)), url("../img/group/team_sather_gate.png") fixed center center;
+  background-size: cover;
+  padding: 120px 0;
+}
+
+.team_photo_background .member {
   position: relative;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   padding: 30px;
@@ -1126,32 +1133,32 @@ section {
   transition: 0.5s;
 }
 
-.team .member .pic {
+.team_photo_background .member .pic {
   overflow: hidden;
   width: 180px;
   border-radius: 50%;
 }
 
-.team .member .pic img {
+.team_photo_background .member .pic img {
   transition: ease-in-out 0.3s;
 }
 
-.team .member:hover {
+.team_photo_background .member:hover {
   transform: translateY(-10px);
 }
 
-.team .member .member-info {
+.team_photo_background .member .member-info {
   padding-left: 30px;
 }
 
-.team .member h4 {
+.team_photo_background .member h4 {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
   color: #37517e;
 }
 
-.team .member span {
+.team_photo_background .member span {
   display: block;
   font-size: 15px;
   padding-bottom: 10px;
@@ -1159,7 +1166,7 @@ section {
   font-weight: 500;
 }
 
-.team .member span::after {
+.team_photo_background .member span::after {
   content: "";
   position: absolute;
   display: block;
@@ -1170,19 +1177,19 @@ section {
   left: 0;
 }
 
-.team .member p {
+.team_photo_background .member p {
   margin: 10px 0 0 0;
   font-size: 14px;
 }
 
-.team .member .social {
+.team_photo_background .member .social {
   margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.team .member .social a {
+.team_photo_background .member .social a {
   transition: ease-in-out 0.3s;
   display: flex;
   align-items: center;
@@ -1193,21 +1200,21 @@ section {
   background: #eff2f8;
 }
 
-.team .member .social a i {
+.team_photo_background .member .social a i {
   color: #37517e;
   font-size: 16px;
   margin: 0 2px;
 }
 
-.team .member .social a:hover {
+.team_photo_background .member .social a:hover {
   background: #47b2e4;
 }
 
-.team .member .social a:hover i {
+.team_photo_background .member .social a:hover i {
   color: #fff;
 }
 
-.team .member .social a+a {
+.team_photo_background .member .social a+a {
   margin-left: 8px;
 }
 
@@ -1854,3 +1861,64 @@ section {
     padding-top: 4px;
   }
 }
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  /*border: 1px solid #ccc;*/
+  border: none;
+  /*background-color: #f1f1f1;*/ 
+  background-color: none;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  /*background-color: white;*/
+  float: left;
+  border: #38507e;
+  outline: #38507e;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  /*background-color: #ddd;*/
+  background-color: #dfe6f5;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  /*background-color: #ccc;*/
+  background-color: #38507e;
+  color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  /*border: 1px solid #ccc;*/
+  border: none;
+  border-top: none;
+}
+
+/* style the table for results */
+table {
+  /*font-family: arial, sans-serif;*/
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+/*tr:nth-child(even) {
+  background-color: #dddddd;
+}*/
