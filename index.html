@@ -101,7 +101,7 @@
               Air pollution is a pervasive, global issue worsening due to climate change, 
               increasing population, deforestation, and other causes. Among different types 
               of air pollution, PM2.5 pollution, which consists of fine particulate matter 
-              smaller than 2.5 microns, poses significant health effects,  as it can enter 
+              smaller than 2.5 microns, poses significant health effects as it can enter 
               the bloodstream. 
             </p>
             <p>
@@ -109,13 +109,13 @@
               with increased risk of childhood cancer, cardiovascular and respiratory illnesses, 
               end-stage renal disease, and diabetes  (Brender, Maantay, and Chakraborty, 2011), 
               but the breadth and extent of contemporaneous and long-term impacts of PM2.5 exposure 
-              on hematopoietic cancers, type 1 diabetes, and vasculitis are not well understood in 
-              children.
+              on chronic health conditions among children is not well-understood. 
             </p>
             <p>
               We develop a causal model for estimating the effects of pollution exposure on 
-              health using variation in local air pollution driven by wind speed and direction, 
-              as well as proximity to schools in the state of California over a 15-year period.
+              health using variation in local air pollution driven by wind speed, direction, pollution emited 
+              by large pollution sites, as well as proximity of those polluters to schools 
+              in the state of California over a 15-year period.
             </p>
             
 
@@ -140,29 +140,30 @@
           <div class="col-lg-6">
 
             <ul>
-              <li><i class="ri-check-double-line"></i><b>Aim 1:</b> Issues of air quality disproportionately 
+              <li><i class="ri-check-line"></i><b>Aim 1:</b> Issues of air quality disproportionately 
                 affect children who live in less wealthy areas. To understand this issue better, 
                 the first goal is to build unique high-quality data of PM2.5 pollution exposure 
                 at every school in CA.
               </li>
-              <li><i class="ri-check-double-line"></i><b>Aim 2:</b> Establish an empirical relationship 
-                between PM2.5  levels recorded at schools in CA and being upwind from key point sources 
+              <li><i class="ri-check-line"></i><b>Aim 2:</b> Establish an empirical relationship 
+                between PM2.5 levels recorded at schools in CA and being upwind from key point sources 
                 of pollution.</li>
-              <li><i class="ri-check-double-line"></i><b>Aim 3:</b> Estimate the causal effect of a school 
+              <li><i class="ri-check-line"></i><b>Aim 3:</b> Estimate the causal effect of a school 
                 being located downwind from key pollution sources on emergency room visits and 
-                hospitalization rates for hematopoietic cancers, type 1 diabetes, and pediatric 
-                vasculitis conditions among children 0-19 years old. </li>
+                hospitalization rates for hematopoietic cancers, type 1 diabetes, cardiorespiratory cancers, 
+                blood disease, blood vessel disease, all cancers, and all non-blood cancers 
+                among children 0-19 years old. </li>
 
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <ul>
-              <li><i class="ri-check-double-line"></i><b>Aim 4:</b> Conduct counterfactual study to compare 
+              <li><i class="ri-check-line"></i><b>Aim 4:</b> Conduct counterfactual study to compare 
                 and quantify the benefits of various air pollution mitigation strategies.
               </li>
-              <li><i class="ri-check-double-line"></i><b>Aim 5:</b> Develop a model to predict future 
-                emergency room visits and hospitalization rates for hematopoietic cancers, 
-                type 1 diabetes, and pediatric vasculitis conditions among children 0-19 years 
+              <li><i class="ri-check-line"></i><b>Aim 5:</b> Develop a model to predict future 
+                emergency room visits and hospitalization rates for hematopoietic cancers, type 1 diabetes, cardiorespiratory cancers, 
+                blood disease, blood vessel disease, all cancers, and all non-blood cancers among children 0-19 years 
                 old, using demographics, pollution properties, and time-series trends in addition 
                 to wind.
               </li> 
@@ -234,8 +235,14 @@
               <p>Info about pm2.5 dataset</p>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
-              <img src="assets/img/dataviz/pm25.png" alt="era5 wind example" width="100%">
-            </div>
+              <!--<img src="assets/img/dataviz/pm25.png" alt="era5 wind example" width="100%">-->
+
+              <tableau-viz id="tableauViz" 
+                src='https://public.tableau.com/shared/TCGHGSSPG?:display_count=n&:origin=viz_share_link'>
+              </tableau-viz>
+                
+            
+              </div>
           </div>
           
         </div>
@@ -312,6 +319,7 @@
           <h2>Results</h2>
 
             <div class="row content">
+              <h3 align="left">Stage 1 Regression Results:</h3>
               <div class="col-lg-6">
                 <p align="left">
                   The first stage regression model predicts a rolling x month average pm2.5 value for each zip code and month. 
@@ -333,8 +341,10 @@
                 </table>
               </div>
             </div>
-            <br><br>
+            <br><br><br>
             <div class="row content">
+              
+              <h3 align="left">Stage 2 Regression Results:</h3>
               <div class="col-lg-6">
                 <p align="left">
                   The second stage regression model predicts the number of medical diagnoses per capita.
@@ -581,6 +591,10 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Tableau embedding api-->
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+
 
 </body>
 
