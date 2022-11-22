@@ -9,8 +9,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/healthCAir_white.png" rel="icon">
+  <link href="assets/img/healthCAir_white.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/healthcair_teaser_image.png" alt="team photo" width="100%">
+          <img src="assets/img/teaser image transparent back.png" alt="team photo" width="100%">
         </div>
       </div>
     </div>
@@ -113,9 +113,10 @@
             </p>
             <p>
               We develop a causal model for estimating the effects of pollution exposure on 
-              health using variation in local air pollution driven by wind speed, direction, pollution emited 
-              by large pollution sites, as well as proximity of those polluters to schools 
-              in the state of California over a 15-year period.
+              pediatric health outcomes using variation in local air pollution driven by wind speed, 
+              wind direction, pollution emited by pollution sites, and proximity of pollution sites to schools. 
+              We study these effects among the pediatric population in the state of California 
+              during the years 2000 through 2017.
             </p>
             
 
@@ -149,10 +150,8 @@
                 between PM2.5 levels recorded at schools in CA and being upwind from key point sources 
                 of pollution.</li>
               <li><i class="ri-check-line"></i><b>Aim 3:</b> Estimate the causal effect of a school 
-                being located downwind from key pollution sources on emergency room visits and 
-                hospitalization rates for hematopoietic cancers, type 1 diabetes, cardiorespiratory cancers, 
-                blood disease, blood vessel disease, all cancers, and all non-blood cancers 
-                among children 0-19 years old. </li>
+                being located downwind from key pollution sources on selected chronic health conditions among
+                children under the age of 19.</li>
 
             </ul>
           </div>
@@ -196,18 +195,29 @@
         <!-- Tab content -->
         <div id="med" class="tabcontent">
           <br><h3>Medical Diagnoses</h3>
-          <div class="row content">
-            <div class="col-lg-6">
-              <p>Pediatric medical diagnoses data were provided by the California Department of Public Health. 
-              The dataset consists of 56.2 million records of pediatric hospital visits that occured in the state of California between 2000 and 2017. 
-              <br><br>
-              (Insert dataviz, perhaps a heat map of one/all of our medical diagnoses on a map? Maybe even a gif over time?)
-            </p>
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0">
-              <img src="assets/img/dataviz/era5.png" alt="era5 wind example" width="100%">
-            </div>
-          </div>
+          <p>
+            Pediatric medical diagnosis data come from the California Department of Public Health (CDPH) and the California Office of Statewide Health Planning and Development (OSHPD).
+            This dataset contains HIPPA protected medical data including demographic info about each patient and the list of diagnoses and procedures for each individual visit in the state of California during 2000 through 2017. 
+            However, for the purposes of our project, we were interested in studying the quantity of specific medical diagnoses aggregated to the month and zipcode level.
+          </p>
+          <p>
+            Because we are not specialists in the medical field, we consulted with a medical doctor 
+            to better understand which pediatric health outcomes would be the most plausible to have a causal link with pm2.5. 
+            After our discussions and research, we decided to focus on the following pediatric medical conditions in our study:
+
+            <ol>
+              <li>Hematopoietic cancer</li>
+              <li>Type 1 diabetes</li>
+              <li>All malignant cancers</li>
+              <li>All non-blood malignant cancers</li>
+              <li>Cardiorespiratory cancer</li>
+              <li>Blood diseases</li>
+              <li>Blood vessel diseases</li>
+              <li>Both blood and blood vessel diseases</li>
+              <li>Respiratory diseases (used as a control diagnosis for which we expect to see strong significance)</li>
+              <li>Injuries (used as a control diagnosis for which we expect to see no signifiance)</li>
+            </ol>
+          </p>
         </div>
 
         <div id="wind" class="tabcontent">
@@ -215,11 +225,23 @@
           <div class="row content">
             <div class="col-lg-6">
               <p>
-              Wind data was supplied by ERA5 (update exact source details). 
-              The dataset consists of over x million records of hourly wind observations collected during the 2000-2017 time period. 
+                The goal of including wind data was to properly construct an instrument which predicts the 
+                amount of PM2.5 at each school based on the location of nearby pollution point sources. 
+                We find that as wind blows directly from a pollution source towards a school, we see higher 
+                levels of PM2.5 measurements at the school. 
+              </p>
+              <p>
+                The wind data used in our study came from a dataset called ERA5. 
+                ERA5 contains hourly wind observations measured every 31km across the globe. 
+                Each measurement provies information such as wind speed and wind direction. 
+                For every school and pollution source in our dataset, we found the nearest wind measurement and used this information to help construct our instrument. 
+              </p>
+              <p>
+                This visualization demonstrates how we use the wind measurements from ERA5 to construct our instrument. 
+                (wait until we have a visual and add more info)
+
               </p>
             </div>
-
             <div class="col-lg-6 pt-4 pt-lg-0">
               <img src="assets/img/dataviz/era5.png" alt="era5 wind example" width="100%">
             </div>
@@ -232,16 +254,27 @@
           <br><h3>PM2.5 Readings</h3>
           <div class="row content">
             <div class="col-lg-6">
-              <p>Info about pm2.5 dataset</p>
+              <p>
+                PM2.5, or particulate matter 2.5, are fine droplets of pollution in the air that are 2.5 microns or less in width. 
+                PM2.5 is believed to be the most deadly due to it's ability to enter the bloodstream. 
+                We collected PM2.5 data from the Environmental Protection Agency (EPA) and satellite imagry. 
+                <!-- source: https://sites.wustl.edu/acag/datasets/historical-pm2-5-across-north-america/ -->
+              </p>
+              <p>
+                This data visualization shows the average PM2.5 levels from 2000 through 2017. 
+                Only the zip codes for which we had an open school in our dataset are displayed in the graph. 
+                Zip codes without an open school from 2000 through 2017 were not considered in our analysis. 
+                We observe that PM2.5 levels are generally the highest in the Los Angeles region with average PM2.5 levels as high as 18 tons per year. 
+                Similarly, the central valley of California also shows to have high levels of PM2.5 with average PM2.5 levels in the 12-17 tons per year range. 
+              </p>
+
+
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
               <!--<img src="assets/img/dataviz/pm25.png" alt="era5 wind example" width="100%">-->
-
               <tableau-viz id="tableauViz" 
-                src='https://public.tableau.com/shared/TCGHGSSPG?:display_count=n&:origin=viz_share_link'>
+                src='https://public.tableau.com/views/AveragePM2_5/AvgPM2_5?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'>
               </tableau-viz>
-                
-            
               </div>
           </div>
           
@@ -249,15 +282,26 @@
         
         <div id="pollution_sources" class="tabcontent">
           <br><h3>Pollution Sources</h3>
-          <p>blah</p>
+          <p>
+            Comes from the EPA
+          </p>
         </div>
 
         <div id="schools" class="tabcontent">
           <br><h3>Schools</h3>
-          <p>
-            The California schools dataset comes from the California School Campus Database (CSCD). 
-            The list contains over 10,000 California schools ranging from kindergarden to high school. 
-          </p>
+          <div class="row content">
+            <div class="col-lg-6">
+              <p>
+                The California schools dataset comes from the California School Campus Database (CSCD). 
+                The list contains over 10,000 California schools ranging from kindergarden to high school. 
+              </p>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <tableau-viz id="tableauViz" 
+                src=''>
+              </tableau-viz>
+            </div>
+          </div>
         </div>
 
         <div id="population" class="tabcontent">
@@ -283,30 +327,70 @@
         </div>
 
         <div class="row content">
+          <h3>Instrumental Variables Regression</h3>
           <div class="col-lg-12">
             <p>
-              We model each of our three health outcomes using an instrumental variables (2SLS IV) regression. 
+              We model each of our three health outcomes using a two-stage least squares instrumental variables (2SLS IV) regression. 
               This modeling technique involves a two-stage process:
               <ol>
                 <li>Model PM2.5 using our instrument and fixed effects.</li>
                 <li>Model the number of positive medical diagnoses using this predicted pm2.5 and same fixed effects.</li>
               </ol>
+
+              A hopsital visit in a given month for our selected medical conditions is not just a result of the PM2.5 levels in the same month, 
+              but rather a cumulation of PM2.5 exposure over several months. 
+              For this reason, we've decided to use a look back at the prior three month rolling average PM2.5 value for a given month
+              to predict the proceeding nine month rolling average count of medical outcomes.
             </p>
-
               This process can be represented by the following notation:
-              
-              <p><span class="math display">$$\widehat{PM}_{2.5}=\beta_0 + \beta_1 I + \beta_2 year + \beta_3 month + \beta_4 county + \epsilon$$</span></p>
-              <p><span class="math display">$$Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \widehat{PM}_{2.5} + \delta_2 year + \delta_3 month + \delta_4 county + \epsilon$$</span></p>
-
+              <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 I + \beta_2 year + \beta_3 month + \beta_4 county + \epsilon \]</p>
+              <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \widehat{PM}_{2.5} + \delta_2 year + \delta_3 month + \delta_4 county + \epsilon \]</p>
+              <p>
+                <ul>
+                  <li>\( \widehat{PM}_{2.5} \) = the predicted PM2.5 three month average for every zip code and month</li>
+                  <li>\( \beta_i \) = the first stage regression coefficient for the i'th variable</li>
+                  <li>\( \delta_i \) = the second stage regression coefficient for the i'th variable.</li>
+                </ul>                
+              </p>
+              <p>
+                The instrument, \(I\), is calculated using several different variables involving wind, pollution, and distance variables.
+                We've considered the nearest 20 pollution point sources to each school, and for each, we've used their tons of PM2.5 emitted each year (TPY), distance to the school, 
+                wind speed, and wind direction to compute this instrument.
+              </p>
+              <p>
+                \[I = \sum_{ps=1}^{3} \sum_{d_m=1}^{D_m} \theta_{zd_m} * TPY_{ps} * \frac{S_{zd_m}}{D_{ps}} \]
+              </p>
+              <p>
+                <ul>
+                  <li>\( z \) = zip code</li>
+                  <li>\( m \) = month</li>
+                  <li>\( ps \) = pollution point source</li>
+                  <li>\( D_m \) = number of days in month</li>
+                  <li>\( d_m \) = day of month</li>
+                  <li>\( TPY \) = point source pollution output (tons per year)</li>
+                  <li>\( S_{zd_m} \) = wind speed</li>
+                  <li>\( D_{ps} \) = distance to pollution point source</li>
+                </ul>
+              </p>
 
             <p>
-              We've selected 8 medical diagnoses of interest for our study as well as two additional medical diagnoses used for control. 
+              We've applied this regression framework on each of our ten medical outcomes of interest. 
               Our second stage regression model predicts the number of positive medical diagnoses per 1,000 people using the pediatric population. 
             </p>
 
             
           </div>
         </div>
+        <br>
+        <div class="row content">
+          <h3>Counterfactual Analysis</h3>
+          <p>
+            After determining which medical outcomes are most related to PM2.5 through the instrumental variables regression framework, 
+            we conducted a counterfactual analysis to see how the predicted number of medical diagnoses would differ under various levels of PM2.5. 
+
+          </p>
+          
+          
 
       </div>
     </section><!-- End Modeling Section -->
@@ -434,8 +518,21 @@
         <div class="section-title">
           <h2>Resources</h2>
           <p>
-            Provide links to research paper, slide deck, etc. (optional). <br>
-            Or if we want, maybe just provide link to research paper and title section "research paper"
+            <div class="row">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            
+            <div class="col-lg-6 pt-4 pt-lg-0">
+            <form method="get" action="assets/pdf/MCHRI Research Poster.pdf">
+              <button class="download-btn"><i class="fa fa-file-pdf-o"></i> MCHRI Stanford Poster</button>
+            </form>
+            </div>
+
+            <div class="col-lg-6 pt-4 pt-lg-0">
+            <form method="get" action="assets/pdf/MCHRI Research Poster.pdf">
+              <button class="download-btn"><i class="fa fa-file-pdf-o"></i> Research Paper (update link)</button>
+            </form>
+            </div>
+            </div>
           </p>
         </div>
       </div>
@@ -539,8 +636,8 @@
             Several subject matter experts and professors were instrumental in aiding the success of our project. 
             We'd like to thank <b>Cornelia Ilin, PhD</b> for the project ideation, continual guidance throughout the process, and encouraging us to submit our abstract to Stanford University's Maternal and Child Health Research Institute Poster Session. 
             <b>Alberto Todeschini, PhD</b> for his guidance and for encouraging us to present at Berkeleys AI Research (BAIR).
-            <b>Dr. Matthew Myer</b> for helping us narrow down our list of pediatric medical diagnoses to study in our research. 
-            <b>Robert Davis, PhD</b> for his expertise in bioclimatology and helping us understand the factors for spreading pm2.5. 
+            <b>Dr. Matthew Meyer</b> for helping us narrow down our list of pediatric medical diagnoses to study in our research. 
+            <b>Robert Davis, PhD</b> for his expertise in bioclimatology and helping us understand the factors for spreading PM2.5. 
             
           </p>
         </div>
@@ -564,14 +661,14 @@
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        <!-- &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved -->
+        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -587,7 +684,11 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- mathjax-->
+  <!--<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
