@@ -1323,6 +1323,25 @@ section {
   background: #23a3df;
 }
 
+/* adding section for download buttons */
+.download-btn {
+  display: inline-block;
+  padding: 12px 35px;
+  border-radius: 50px;
+  color: #47b2e4;
+  transition: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Jost", sans-serif;
+  transition: 0.3s;
+  border: 1px solid #47b2e4;
+}
+
+.download-btn:hover {
+  background: #47b2e4;
+  color: #fff;
+}
+
 @media (max-width: 992px) {
   .pricing .box {
     max-width: 60%;
