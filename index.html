@@ -267,16 +267,34 @@
               <tableau-viz id="tableauViz" 
                 src='https://public.tableau.com/views/AveragePM2_5/AvgPM2_5?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'>
               </tableau-viz>
-              </div>
+            </div>
           </div>
         </div>
         
         <div id="pollution_sources" class="tabcontent">
           <br><h3>Pollution Sources</h3>
-          <p>
-            In order to predict the volume of PM2.5 at each school, we used nearby point sources of pollution to each school as well as wind data. 
-            
-          </p>
+          <div class="row content">
+            <div class="col-lg-6">
+              <p>
+                In order to predict the volume of PM2.5 at each school, 
+                we looked at the nearest 20 point sources of pollution and the amount of PM2.5 emited from each with wind data. 
+                We used the National Emissions Inventory (NEI) provided by the Environmental Protection Agency (EPA), 
+                which contains information on stationary pollution point sources and the amoun tof PM2.5 emitted. 
+                The pollution point sources primarily consist of large industrial facilities, power plants, airports, and commercial facilities. 
+              </p>
+              <p>
+                The NEI list contains many point sources of insignificant volumes of PM2.5 emitted. 
+                Thus, we decided to filter the dataset to only use the pollution point sources with PM2.5 emissions above 4 tons per year (TPY).
+              </p>
+            </div>
+
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <!--<img src="assets/img/dataviz/pm25.png" alt="era5 wind example" width="100%">-->
+            <tableau-viz id="tableauViz" 
+              src='https://public.tableau.com/views/pollution_point_sources/Dash?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'>
+            </tableau-viz>
+          </div>
+          </div>
         </div>
 
         <div id="schools" class="tabcontent">
