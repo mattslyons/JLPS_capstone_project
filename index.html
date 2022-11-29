@@ -221,7 +221,7 @@
           <br><h3>Medical Diagnoses</h3>
           <p>
             Pediatric medical diagnosis data come from the California Department of Public Health (CDPH) and the California Office of Statewide Health Planning and Development (OSHPD).
-            This dataset contains HIPPA-protected medical data including demographic info about each patient and the list of diagnoses and procedures for each individual visit in the state of California from 2000 through 2017. 
+            This dataset contains HIPAA-protected medical data including demographic info about each patient and the list of diagnoses and procedures for each individual visit in the state of California from 2000 through 2017. 
             However, for the purposes of our project, we were interested in studying the quantity of specific medical diagnoses aggregated to the month and zip code level.
           </p>
           <p>
@@ -274,6 +274,9 @@
         <div id="pollution_sources" class="tabcontent">
           <br><h3>Pollution Sources</h3>
           <div class="row content">
+
+              <!-- <div class='tableauPlaceholder' id='viz1669691156620' style='position: relative'><noscript><a href='#'><img alt='Dash ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;F2&#47;F23CNNJXC&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;F23CNNJXC' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;F2&#47;F23CNNJXC&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1669691156620');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> -->
+            <!-- <div class="column left"> -->
             <div class="col-lg-6">
               <p>
                 In order to predict the volume of PM2.5 at each school, 
@@ -287,13 +290,11 @@
                 Thus, we decided to filter the dataset to only use the pollution point sources with PM2.5 emissions above 4 tons per year (TPY).
               </p>
             </div>
-
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <!--<img src="assets/img/dataviz/pm25.png" alt="era5 wind example" width="100%">-->
-            <tableau-viz id="tableauViz" 
-              src='https://public.tableau.com/views/pollution_point_sources/Dash?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'>
-            </tableau-viz>
-          </div>
+            <!-- <div class="column right"> -->
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <!-- <div class='tableauPlaceholder' id='viz1669691156620' style='position: relative'><noscript><a href='#'><img alt='Dash ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;F2&#47;F23CNNJXC&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;F23CNNJXC' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;F2&#47;F23CNNJXC&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1669691156620');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> -->
+              <div class='tableauPlaceholder' id='viz1669691156620' style='position: relative'><noscript><a href='#'><img alt='Dash ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;F2&#47;F23CNNJXC&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;F23CNNJXC' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;F2&#47;F23CNNJXC&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1669691156620');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
           </div>
         </div>
 
@@ -353,7 +354,7 @@
               This modeling technique involves a two-stage process:
               <ol>
                 <li>Model PM2.5 using our instrument and fixed effects.</li>
-                <li>Model the number of positive medical diagnoses using this predicted pm2.5 and same fixed effects.</li>
+                <li>Model the number of positive medical diagnoses using this predicted PM2.5 and same fixed effects.</li>
               </ol>
 
               A hospital visit in a given month for our selected medical conditions is not just a result of the PM2.5 levels in the same month, 
@@ -406,7 +407,15 @@
           <p>
             After determining which medical outcomes are most related to PM2.5 through the instrumental variables regression framework, 
             we conducted a counterfactual analysis to see how the predicted number of medical diagnoses would differ under various levels of PM2.5. 
-
+            The purpose of the counterfactual analysis is to show how the predicted medical outcome would decrease under scenarios with lower PM2.5 values. 
+            We chose to conduct this counterfactual analysis on hematopoietic cancer because this medical outcome showed the most promising results from our instrumental variables regression. 
+          </p>
+          <p>
+            In order to make these predictions for the counterfactual analysis, we used XGBoost. 
+            XGBoost allows us to model the nonlinear relationships between our variables which provides an advantage over OLS.
+            We first used XGBoost to predict PM2.5 values in the first stage regression, with the same fixed effects that we used in our two-stage OLS model. 
+            Next, we used these predicted PM2.5 values with the same fixed effects to train an XGBoost model to predict hematopoietic cancer. 
+            Then we altered the test data by decreasing the PM2.5 values by certain percentages to see how the hematopoietic cancer cases would change. 
           </p>
           
           
