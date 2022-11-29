@@ -1941,3 +1941,17 @@ td, th {
 /*tr:nth-child(even) {
   background-color: #dddddd;
 }*/
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
