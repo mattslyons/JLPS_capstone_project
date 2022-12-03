@@ -151,22 +151,16 @@
               <li><b>Aim 2:</b> Establish an empirical relationship 
                 between PM2.5 levels recorded at schools in CA and being upwind from key point sources 
                 of pollution.</li>
-              <li><b>Aim 3:</b> Estimate the causal effect of a school 
-                being located downwind from key pollution sources on selected chronic health conditions among
-                children under the age of 19.</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <ul>
+              <li><b>Aim 3:</b> Estimate the causal effect of a school 
+                being located downwind from key pollution sources on selected chronic health conditions among
+                children under the age of 19.</li>
               <li><b>Aim 4:</b> Conduct a counterfactual study to compare 
                 and quantify the benefits of various air pollution mitigation strategies.
               </li>
-              <li><b>Aim 5:</b> Develop a model to predict future 
-                emergency room visits and hospitalization rates for hematopoietic cancers, type 1 diabetes, cardiorespiratory cancers, 
-                blood disease, blood vessel disease, all cancers, and all non-blood cancers among children 0-19 years 
-                old, using demographics, pollution properties, and time-series trends in addition 
-                to wind.
-              </li> 
             </ul>
           </div>
         </div>
@@ -356,7 +350,12 @@
             This allows us to compare the diagnosis rates across zip codes with varying population levels. 
           </p>
         </div>
-
+        <br><hr><br>
+        <h2>Combined datasets</h2>
+        <p>
+          <p style="color:red">UPDATE: Maybe add matt's static map here? then include link to interactive version? Or maybe this section belongs after we introduce the instrument?</p>
+          
+        </p>
 
       </div>
     </section><!-- End datasets Section -->
@@ -373,30 +372,33 @@
         <div class="row content">
           <h3>Instrumental Variables Regression</h3>
           <div class="col-lg-12">
-            <p style="color:red">UPDATE: Correct the fixed effects in this section once we're sure about the ones we're using. Perhaps include some text wrapping for the latex also. </p>
+            <p style="color:red">UPDATE: Correct the fixed effects in this section once we're sure about the ones we're using.</p>
             <p>
               We model each of our health outcomes using a two-stage least squares instrumental variables (2SLS IV) regression. 
               The two modeling stages are as follows:
               <ol>
-                <li>Model PM2.5 using our instrument and fixed effects.</li>
-                <li>Model the number of medical diagnoses using this predicted PM2.5 and same fixed effects.</li>
+                <b><li>Model PM2.5 using our instrument and fixed effects:</li></b>
+                  <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 \kern 0.05em I + \beta_2 \kern 0.05em year + \beta_3 \kern 0.05em month + \beta_4 \kern 0.05em county + \beta_5 \kern 0.05em temperature \]</p>
+                  <p>\[ \kern 1.5em + \beta_6 \kern 0.05em elevation + \beta_7 \kern 0.05em income + \beta_8 \kern 0.05em population + \beta_9 \kern 0.05em wspd_{avg} + \epsilon \]</p>
+                <b><li>Model the number of medical diagnoses using this predicted PM2.5 and same fixed effects:</li></b>
+                  <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \kern 0.05em \widehat{PM}_{2.5} + \delta_2 \kern 0.05em year + \delta_3 \kern 0.05em month + \delta_4 \kern 0.05em county + \delta_5 \kern 0.05em temperature  \]</p>
+                  <p>\[ \kern 5.1em + \delta_6 \kern 0.05em elevation + \delta_7 \kern 0.05em income + \delta_8 \kern 0.05em population + \delta_9 \kern 0.05em wspd_{avg} + \epsilon \]</p>
               </ol>
-              The medical diagnoses in our study are ones that develop over time. 
-              A hospital visit is likely due to a cumulation of PM2.5 exposure over several months. 
+            </p>
+            <p>
+              <ul>
+                <li>\( \widehat{PM}_{2.5} \) = the predicted PM2.5 nine month average for every zip code and month</li>
+                <li>\( \beta_i \) = the first stage regression coefficient for variable i</li>
+                <li>\( \delta_i \) = the second stage regression coefficient variable i</li>
+              </ul>                
+            </p>
+            <p>
+              The medical diagnoses in our study are ones that develop over time&mdash;a
+              hospital visit is likely due to a cumulation of PM2.5 exposure over several months. 
               For this reason, we've decided to look back at the prior 9 month rolling average PM2.5 exposure 
               to predict the proceeding 3 month rolling average frequency of medical outcomes.
               We've applied this regression framework to each of our ten medical outcomes of interest. 
             </p>
-              This process can be represented by the following notation:
-              <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 \kern 0.05em I + \beta_2 \kern 0.05em year + \beta_3 \kern 0.05em month + \beta_4 \kern 0.05em county + \beta_5 \kern 0.05em temperature + \beta_6 \kern 0.05em elevation + \beta_7 \kern 0.05em income + \beta_8 \kern 0.05em population + \beta_9 \kern 0.05em wspd_{avg} + \epsilon\]</p>
-              <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \kern 0.05em \widehat{PM}_{2.5} + \delta_2 \kern 0.05em year + \delta_3 \kern 0.05em month + \delta_4 \kern 0.05em county + \delta_5 \kern 0.05em temperature + \delta_6 \kern 0.05em elevation + \delta_7 \kern 0.05em income + \delta_8 \kern 0.05em population + \delta_9 \kern 0.05em wspd_{avg} + \epsilon\]</p>
-              <p>
-                <ul>
-                  <li>\( \widehat{PM}_{2.5} \) = the predicted PM2.5 9 month average for every zip code and month</li>
-                  <li>\( \beta_i \) = the first stage regression coefficient for variable i</li>
-                  <li>\( \delta_i \) = the second stage regression coefficient variable i</li>
-                </ul>                
-              </p>
               <p>
                 The instrument, \(I\), is calculated using several different variables involving wind, 
                 pollution, and distance variables.
@@ -410,9 +412,8 @@
               </p>
               <p>
                 <ul>
-                  <li>\( z \) = zip code</li>
-                  <li>\( m \) = month</li>
-                  <li>\( ps^{*} \) = pollution point source prefiltered to include only point sources with average TPY levels greater than 4</li>
+                  <li>\( zmy \) = zip code, month, and year combination</li>
+                  <li>\( ps^{*} \) = pollution point source prefiltered to only include those with average TPY levels greater than 4</li>
                   <li>\( D_m \) = number of days in month</li>
                   <li>\( d_m \) = day of month</li>
                   <li>\( H_d \) = hour of day</li>
@@ -420,7 +421,7 @@
                   <li>\( TPY \) = point source pollution output (tons per year)</li>
                   <li>\( S_{zd_m} \) = wind speed</li>
                   <li>\( D_{ps} \) = distance to pollution point source</li>
-                  <li>\( \sim \) = all variables containing a a tilde are normalized using standard scaler (distance, TPY) and/or min-max scaling</li>
+                  <li>\( \sim \) = all variables containing a tilde are normalized using standard scaler (distance, TPY) and/or min-max scaling</li>
                 </ul>
               </p>
             
@@ -431,7 +432,7 @@
                 We've included a video which helps illustrate this instrument calculation
                 and how it's used to predict PM2.5 levels at each school. 
                 <br><br>
-                <p style="color:red">Optional section: Insert matt's video (or gif) explaining the instrument. Or just delete this section if that's too hard. </p>
+                <p style="color:red">Optional section: Insert matt's video (or gif) explaining the instrument. Or his argis screenshot w/ link to interactive version. Or just delete this section if that's too hard. </p>
               </p>
 
           </div>
@@ -452,7 +453,7 @@
                   The first stage regression model predicts a rolling 9 month average PM2.5 value for each zip code and month.
                   While this model includes several fixed-effects for its predictions, 
                   the primary variable of interest in this equation is our instrument, <i>I</i>. 
-                  Because our instrument combines over 4 different measurements, its unit of measurement is uninterpretable. 
+                  Because our instrument combines 4 different variables, its unit of measurement is uninterpretable. 
                   However, the low p-value indicates that the model is very confident that the true impact 
                   of our instrument on PM2.5 is not 0. 
                 </p>
@@ -484,8 +485,27 @@
                 We've chosen to highlight five medical outcome from our study in this table. 
                 For each medical outcome, we've included the summary statistics for both the predicted PM2.5 
                 value (\( \widehat{PM}_{2.5} \)) and the true PM2.5 value (\( PM_{2.5} \)). 
-
-                <p align="left" style="color:red">UPDATE: include commentary on how to interpret the coefficients and what the findings mean. Wait to do so after we're sure these are the final results. </p>
+                <br>
+                <p align="left" style="color:red"><br>UPDATE: include commentary on how to interpret the coefficients and what the findings mean. Wait to do so after we're sure these are the final results. <br></p>
+              </p>
+              <p align="left">
+                We observe that \( \widehat{PM}_{2.5} \) is not a statistically significant predictor 
+                of any of our selected medical outcomes at the 95% confidence interval level. 
+                As an example, we can interpret the coefficient for hematopoietic cancers to be that as the rolling 9 month average 
+                of PM2.5 rises by 1 TPY, we expect the following 3 month rolling average pediatric hematopoietic cancer 
+                case rate to rise by 0.0209 cases per 1,000 children. The model is 95% confident that the true impact 
+                of PM2.5 lies between -0.0138 and 0.0556. 
+                <br>
+              </p>
+              
+              <p align="left">
+                <br>
+                The statistics under the \( PM_{2.5} \) section show the results of a correlational study using the same 
+                regression framework as the 2nd stage regression, but using the true PM2.5 value as the predictor. 
+                Doing so produces a much more biased estimate of the impact of PM2.5 than the instrumental variable results. 
+                Many coefficients from this regression are negative, which means that higher PM2.5 levels are expected
+                to reduce the number of cases of these medical outcomes. 
+                <br>
               </p>
               
               <br><br>
@@ -584,7 +604,7 @@
               <div class="row content">
                 <div class="col-lg-6">
                   <p align="left">
-                    <img src="assets/img/stanford_mchris.jpg" alt="stanford_mchris" class="img-fluid">
+                    <img src="assets/img/stanford_mchri.jpg" alt="stanford_mchri" class="img-fluid">
                   </p>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0" align="left">
@@ -611,6 +631,19 @@
           <p>
             <div class="row">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <form method="get" action="assets/pdf/MCHRI Research Poster.pdf">
+              <button class="download-btn"><i class="fa fa-file-pdf-o"></i> MCHRI Stanford Poster</button>
+            </form>
+            </div>
+          </p>
+
+          <!-- NOTE:
+          The paragraph tag section below is set up to allow for two side by side download links. 
+          Use this once we have our research paper complete and we can link it here.  -->
+
+          <!-- <p>
+            <div class="row">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             
             <div class="col-lg-6 pt-4 pt-lg-0">
             <form method="get" action="assets/pdf/MCHRI Research Poster.pdf">
@@ -624,7 +657,7 @@
             </form>
             </div>
             </div>
-          </p>
+          </p> -->
         </div>
       </div>
     </section><!-- End results Section -->
@@ -648,7 +681,7 @@
               <div class="pic"><img src="assets/img/team/trevor.png" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Trevor Johnson</h4>
-                <span>Product Manager & <br>Model Evaluation</span>
+                <span>Web Developer & <br>Model Evaluation</span>
                 <p>trevorj@berkeley.edu</p>
                 <div class="social">
                   <!--
@@ -676,6 +709,7 @@
                   <a href=""><i class="ri-facebook-fill"></i></a>
                   <a href=""><i class="ri-instagram-fill"></i></a>
                   -->
+                  <a href="https://github.com/mattslyons"><i class="ri-github-fill"></i></a>
                   <a href="https://www.linkedin.com/in/mattslyons"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
@@ -695,6 +729,7 @@
                   <a href=""><i class="ri-facebook-fill"></i></a>
                   <a href=""><i class="ri-instagram-fill"></i></a>
                   -->
+                  <a href="https://github.com/Anand-Patel-95"><i class="ri-github-fill"></i></a>
                   <a href="https://www.linkedin.com/in/anand-patel-ap95"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
@@ -711,6 +746,7 @@
                 <span>EDA & <br>Data Engineer</span>
                 <p>michelleshen@berkeley.edu</p>
                 <div class="social">
+                  <a href="https://github.com/mshen"><i class="ri-github-fill"></i></a>
                   <a href="https://www.linkedin.com/in/michelle-s-a91593200"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
