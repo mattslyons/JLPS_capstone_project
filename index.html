@@ -350,7 +350,7 @@
           <h3>Instrumental Variables Regression</h3>
           <div class="col-lg-12">
             <p>
-              We model each of our three health outcomes using a two-stage least squares instrumental variables (2SLS IV) regression. 
+              We model each of our health outcomes using a two-stage least squares instrumental variables (2SLS IV) regression. 
               This modeling technique involves a two-stage process:
               <ol>
                 <li>Model PM2.5 using our instrument and fixed effects.</li>
@@ -359,15 +359,15 @@
 
               A hospital visit in a given month for our selected medical conditions is not just a result of the PM2.5 levels in the same month, 
               but rather a cumulation of PM2.5 exposure over several months. 
-              For this reason, we've decided to use a look back at the prior three-month rolling average PM2.5 value for a given month
-              to predict the proceeding nine-month rolling average count of medical outcomes.
+              For this reason, we've decided to use a look back at the prior 9 month rolling average PM2.5 value for a given month
+              to predict the proceeding 3 month rolling average count of medical outcomes.
             </p>
               This process can be represented by the following notation:
               <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 I + \beta_2 year + \beta_3 month + \beta_4 county + \epsilon \]</p>
               <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \widehat{PM}_{2.5} + \delta_2 year + \delta_3 month + \delta_4 county + \epsilon \]</p>
               <p>
                 <ul>
-                  <li>\( \widehat{PM}_{2.5} \) = the predicted PM2.5 three month average for every zip code and month</li>
+                  <li>\( \widehat{PM}_{2.5} \) = the predicted PM2.5 9 month average for every zip code and month</li>
                   <li>\( \beta_i \) = the first stage regression coefficient for the i'th variable</li>
                   <li>\( \delta_i \) = the second stage regression coefficient for the i'th variable.</li>
                 </ul>                
@@ -434,7 +434,7 @@
               <h3 align="left">Stage 1 Regression Results:</h3>
               <div class="col-lg-6">
                 <p align="left">
-                  The first stage regression model predicts a rolling three month average pm2.5 value for each zip code and month.
+                  The first stage regression model predicts a rolling 9 month average pm2.5 value for each zip code and month.
                   While this model includes several fixed-effects for its predictions, 
                   the primary variable of interest in this equation is our instrument, <i>I</i>. 
                   Because our instrument combines over 4 different measurements, its unit of measurement is uninterpretable. 
@@ -445,9 +445,9 @@
               <div class="col-lg-6 pt-4 pt-lg-0">
                 <table>
                   <tr>
-                    <th>Instrument Coefficient</th>
-                    <th>P-value</th>
-                    <th>95% Confidence Interval</th>
+                    <th style="background-color: rgb(56,80,126); color:white">Instrument Coefficient</th>
+                    <th style="background-color: rgb(56,80,126); color:white">P-value</th>
+                    <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
                   </tr>
                   <tr>
                     <td>0.098</td>
@@ -461,90 +461,83 @@
             <div class="row content">
               
               <h3 align="left">Stage 2 Regression Results:</h3>
-              <div class="col-lg-6">
-                <p align="left">
-                  The second stage regression model predicts the number of pediatric medical diagnoses seen per 1,000 children.
 
-                </p>
-              </div>
-  
-              <div class="col-lg-6 pt-4 pt-lg-0">
-                <table>
-                  <tr>
-                    <th>Disease Category</th>
-                    <th><span class="math display">$$\widehat{PM}_{2.5}$$ Coefficient</span></th>
-                    <th>P-value</th>
-                    <th>95% Confidence Interval</th>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Hematopoietic Cancers</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">All Non-blood Malignant Cancers</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Blood Diseases</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Blood or BV Diseases</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Malignant Cancers</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Blood Vessel Diseases</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Cardiorespiratory Cancers</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Type 1 Diabetes</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Respiratory Diseases</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                  <tr>
-                    <td><p align="left">Injuries (Control)</p></td>
-                    <td>0.098</td>
-                    <td>9.32 e-13</td>
-                    <td>[0.07, 0.12]</td>
-                  </tr>
-                </table>
-              </div>
+              <p align="left">
+                The second stage regression model predicts the number of pediatric medical diagnoses seen per 1,000 children.
+              </p>
+              
+              <br><br>
+
+              <table>
+                <tr>
+                  <th rowspan="2" style="background-color: rgb(56,80,126); color:white">Disease Category</th>
+                  <th colspan="3" style="background-color: rgb(56,80,126); color:white">Summary statistics for \( \widehat{PM}_{2.5} \)</span></th>
+                  <th colspan="3" style="background-color: rgb(56,80,126); color:white">Summary statistics for \( {PM}_{2.5} \)</span></th>
+                </tr>
+                <tr>
+                  <!-- <th style="background-color: rgb(56,80,126); color:white"></th> -->
+                  <th style="background-color: rgb(56,80,126); color:white">Coefficient</th>
+                  <th style="background-color: rgb(56,80,126); color:white">P-value</th>
+                  <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
+                  <th style="background-color: rgb(56,80,126); color:white">Coefficient</th>
+                  <th style="background-color: rgb(56,80,126); color:white">P-value</th>
+                  <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
+                </tr>
+                <tr>
+                  <td><p align="left">Hematopoietic Cancers</p></td>
+                  <td>0.0209</td>
+                  <td>0.231</td>
+                  <td>[-0.0138, 0.0556]</td>
+                  <td>-0.00314</td>
+                  <td>0.190</td>
+                  <td>[-0.0079, 0.0016]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Cardioresp. Cancer</p></td>
+                  <td>0.0047</td>
+                  <td>0.251</td>
+                  <td>[-0.00352, 0.0129]</td>
+                  <td>-0.00256</td>
+                  <td>0.0375</td>
+                  <td>[-0.0050, -0.00016]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">All Malignant Cancers</p></td>
+                  <td>0.0127</td>
+                  <td>0.703</td>
+                  <td>[-0.0539, 0.0794]</td>
+                  <td>0.00108</td>
+                  <td>0.739</td>
+                  <td>[-0.0054, 0.0076]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Blood Vessel Diseases</p></td>
+                  <td>0.0011</td>
+                  <td>0.946</td>
+                  <td>[-0.0312, 0.0334]</td>
+                  <td>-0.00184</td>
+                  <td>0.105</td>
+                  <td>[-0.0041, 0.00040]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Cardioresp. Disease</p></td>
+                  <td>-0.995</td>
+                  <td>0.061</td>
+                  <td>[-2.037, 0.0459]</td>
+                  <td>-0.01633</td>
+                  <td>0.811</td>
+                  <td>[-0.153, 0.120]</td>
+                </tr>
+              </table>
+              
             </div>
             <br><br><br>
+
             <h3 align="left">Counterfactual Analysis Results:</h3>
               <div class="row content">
                 <div class="col-lg-6">
                   <p align="left">
-                    asdf
+                    explain results
                   </p>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0">

@@ -1,0 +1,161 @@
+# Code for the arcgis map matt made. wait on updated one. 
+
+
+<!-- ======= Results ======= -->
+    <section id="results" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Cool map</h2>
+
+            <div class="row content">
+              <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="DataSci 210 HealthCAir scratch share test 1" src="https://arcgis.com/apps/Embed/index.html?webmap=3c8aa70cb618466ba45189471969f9c4&extent=-128.4003,33.5014,-112.1734,40.869&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe></div>
+              <!-- <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="DataSci 210 HealthCAir scratch share test 1" src="https://arcgis.com/apps/Embed/index.html?webmap=3c8aa70cb618466ba45189471969f9c4&extent=-127.1436,33.6456,-110.9168,40.9997&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe></div> -->
+              <!-- <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="DataSci 210 HealthCAir scratch share test 1" src="https://arcgis.com/apps/webappviewer/index.html?id=bcafc207374542a5bc220ee8ee62732f"></iframe></div> -->
+              
+            </div>
+
+        </div>
+      </div>
+    </section><!-- End results Section -->
+
+
+
+
+
+# old results table
+
+<div class="col-lg-6 pt-4 pt-lg-0">
+                <table>
+                  <tr>
+                    <th>Disease Category</th>
+                    <th><span class="math display">$$\widehat{PM}_{2.5}$$ Coefficient</span></th>
+                    <th>P-value</th>
+                    <th>95% Confidence Interval</th>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Hematopoietic Cancers</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">All Non-blood Malignant Cancers</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Blood Diseases</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Blood or BV Diseases</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Malignant Cancers</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Blood Vessel Diseases</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Cardiorespiratory Cancers</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Type 1 Diabetes</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Respiratory Diseases</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                  <tr>
+                    <td><p align="left">Injuries (Control)</p></td>
+                    <td>0.098</td>
+                    <td>9.32 e-13</td>
+                    <td>[0.07, 0.12]</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+
+
+
+# table option 1
+
+<table>
+<tr>
+  <th>Disease Category</th>
+  <th><span class="math display">$$\widehat{PM}_{2.5}$$ Coefficient</span></th>
+  <th><span class="math display">$$\widehat{PM}_{2.5}$$ P-value</span></th>
+  <th><span class="math display">$$\widehat{PM}_{2.5}$$ 95% Confidence Interval</span></th>
+
+  <th><span class="math display">$${PM}_{2.5}$$ Coefficient</span></th>
+  <th><span class="math display">$${PM}_{2.5}$$ P-value</span></th>
+  <th><span class="math display">$${PM}_{2.5}$$ 95% Confidence Interval</span></th>
+</tr>
+<tr>
+  <td><p align="left">Hematopoietic Cancers</p></td>
+  <td>0.0209</td>
+  <td>0.231</td>
+  <td>[-0.0138, 0.0556]</td>
+  <td>-0.00314</td>
+  <td>0.190</td>
+  <td>[-0.0079, 0.0016]</td>
+</tr>
+<tr>
+  <td><p align="left">Cardioresp. Cancer</p></td>
+  <td>0.0047</td>
+  <td>0.251</td>
+  <td>[-0.00352, 0.0129]</td>
+  <td>-0.00256</td>
+  <td>0.0375</td>
+  <td>[-0.0050, -0.00016]</td>
+</tr>
+<tr>
+  <td><p align="left"></p>All Malignant Cancers</td>
+  <td>0.0127</td>
+  <td>0.703</td>
+  <td>[-0.0539, 0.0794]</td>
+  <td>0.00108</td>
+  <td>0.739</td>
+  <td>[-0.0054, 0.0076]</td>
+</tr>
+<tr>
+  <td><p align="left"></p>Blood Vessel Diseases</td>
+  <td>0.0011</td>
+  <td>0.946</td>
+  <td>[-0.0312, 0.0334]</td>
+  <td>-0.00184</td>
+  <td>0.105</td>
+  <td>[-0.0041, 0.00040]</td>
+</tr>
+<tr>
+  <td><p align="left">Cardioresp. Disease</p></td>
+  <td>-0.995</td>
+  <td>0.061</td>
+  <td>[-2.037, 0.0459]</td>
+  <td>-0.01633</td>
+  <td>0.811</td>
+  <td>[-0.153, 0.120]</td>
+</tr>
+</table>
