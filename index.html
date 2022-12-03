@@ -98,11 +98,13 @@
 
 
             <p>
-              Air pollution is a pervasive, global issue worsening due to climate change, 
-              increasing population, deforestation, and other causes. Among different types 
-              of air pollution, PM2.5 pollution, which consists of fine particulate matter 
-              smaller than 2.5 microns, poses significant health effects as it can enter 
-              the bloodstream. 
+              Air pollution is a pervasive, global issue worsening due to climate change, increasing population, deforestation, and other causes. 
+              Among the many types of air pollution, PM2.5 is known to be most deadly (Cardenas 2021) and contributed to over 4 million deaths worldwide in 2019 (GBD 2019 Risk Factor Collaborators).
+              <!-- source 1: https://www.mcgill.ca/newsroom/channels/news/air-pollution-silent-killer-called-pm25-329428#:~:text=Small%20but%20deadly,inside%20a%20red%20blood%20cell. -->
+              <!-- source 2 original paper: https://www.thelancet.com/action/showPdf?pii=S0140-6736%2820%2930752-2 -->
+              <!-- source 2 from alberto: https://www.stateofglobalair.org/health/pm -->
+              <!-- sourcd 2 another article that sites this in the first reference: https://www.nature.com/articles/s41467-021-23853-y -->
+              PM2.5 consists of fine particulate matter smaller than 2.5 microns and poses significant health effects as it can enter the bloodstream.
             </p>
             <p>
               Prior studies have found that proximity to sources of pollution is associated 
@@ -141,25 +143,25 @@
           <div class="col-lg-6">
 
             <ul>
-              <li><i class="ri-check-line"></i><b>Aim 1:</b> Issues of air quality can affect all children. 
+              <li><b>Aim 1:</b> Issues of air quality can affect all children. 
                 However, some may be disproportionately impacted by having high concentrations of PM2.5 at or near their school. 
                 To understand this issue better, the first goal is to build unique high-quality data 
                 of PM2.5 pollution exposure at every school in CA.
               </li>
-              <li><i class="ri-check-line"></i><b>Aim 2:</b> Establish an empirical relationship 
+              <li><b>Aim 2:</b> Establish an empirical relationship 
                 between PM2.5 levels recorded at schools in CA and being upwind from key point sources 
                 of pollution.</li>
-              <li><i class="ri-check-line"></i><b>Aim 3:</b> Estimate the causal effect of a school 
+              <li><b>Aim 3:</b> Estimate the causal effect of a school 
                 being located downwind from key pollution sources on selected chronic health conditions among
                 children under the age of 19.</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <ul>
-              <li><i class="ri-check-line"></i><b>Aim 4:</b> Conduct a counterfactual study to compare 
+              <li><b>Aim 4:</b> Conduct a counterfactual study to compare 
                 and quantify the benefits of various air pollution mitigation strategies.
               </li>
-              <li><i class="ri-check-line"></i><b>Aim 5:</b> Develop a model to predict future 
+              <li><b>Aim 5:</b> Develop a model to predict future 
                 emergency room visits and hospitalization rates for hematopoietic cancers, type 1 diabetes, cardiorespiratory cancers, 
                 blood disease, blood vessel disease, all cancers, and all non-blood cancers among children 0-19 years 
                 old, using demographics, pollution properties, and time-series trends in addition 
@@ -197,16 +199,22 @@
           <div class="row content">
             <div class="col-lg-6">
               <p>
-                The goal of including wind data was to properly construct an instrument that predicts the 
-                amount of PM2.5 at each school based on the location of nearby pollution point sources. 
-                We find that as the wind blows directly from a pollution source towards a school, we see higher 
-                levels of PM2.5 measurements at the school. 
+                Wind data forms the basis for constructing our instrument that predicts the amount of PM2.5 at each school 
+                based on the location of nearby pollution point sources. 
+                We find that as the wind blows more directly from a pollution source towards a school, 
+                we see higher levels of PM2.5 measurements at the school. 
               </p>
               <p>
-                The wind data used in our study came from a dataset called ERA5. 
-                ERA5 contains hourly wind observations measured every 31km across the globe. 
-                Each measurement provides information such as wind speed and wind direction. 
-                We found the nearest wind measurement for every school and pollution source in our dataset and used this information to help construct our instrument
+                The wind data used in our study come ERA5, which contains hourly wind observations 
+                measured every 31km across the globe. 
+                Each measurement provides information such as wind speed direction. 
+                We found the nearest wind measurement for every school and pollution source in our dataset and 
+                used this information to predict PM2.5 levels at each school. 
+              </p>
+              <p>
+                This diagram to the right shows the wind measurements that we used across the state of California. 
+                Faster wind speeds are represented by larger wind arrows. 
+                The purple points on the map represent each school used in our study. 
               </p>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
@@ -220,13 +228,16 @@
         <div id="med" class="tabcontent">
           <br><h3>Medical Diagnoses</h3>
           <p>
-            Pediatric medical diagnosis data come from the California Department of Public Health (CDPH) and the California Office of Statewide Health Planning and Development (OSHPD).
-            This dataset contains HIPAA-protected medical data including demographic info about each patient and the list of diagnoses and procedures for each individual visit in the state of California from 2000 through 2017. 
-            However, for the purposes of our project, we were interested in studying the quantity of specific medical diagnoses aggregated to the month and zip code level.
+            Pediatric medical diagnosis data come from the California Department of Public Health (CDPH) and the 
+            California Office of Statewide Health Planning and Development (OSHPD).
+            This dataset contains HIPAA-protected medical data on diagnoses and procedures for each 
+            hospital stay and ER visit in the state of California from 2000 through 2017.
+            For our project, we aggregate these data to the month and zip code level and aim to 
+            predict the proportion of the population experiencing certain medical diseases. 
           </p>
           <p>
-            Because we are not specialists in the medical field, we consulted with a medical doctor 
-            to better understand which pediatric health outcomes would be the most plausible to have a causal link with pm2.5. 
+            Because we are not specialists in the medical field, we consulted with medical doctors 
+            to better understand which pediatric health outcomes would be the most plausible to have a causal link with PM2.5. 
             After our discussions and research, we decided to focus on the following pediatric medical conditions in our study:
 
             <ol>
@@ -250,16 +261,18 @@
           <div class="row content">
             <div class="col-lg-6">
               <p>
-                PM2.5, or particulate matter 2.5, are fine droplets of pollution in the air that are 2.5 microns or less in width. 
-                PM2.5 is believed to be the most deadly due to its ability to enter the bloodstream. 
-                We collected PM2.5 data from the Environmental Protection Agency (EPA) and satellite imagery. 
+                PM2.5 data come from the Environmental Protection Agency (EPA). 
+                The data are collected using chemical transport modeling, satellite remote sensing, and ground-based monitoring. 
                 <!-- source: https://sites.wustl.edu/acag/datasets/historical-pm2-5-across-north-america/ -->
               </p>
               <p>
                 This data visualization shows the average PM2.5 levels from 2000 through 2017. 
-                Only the zip codes which had an open school during the time period of our study (2000-2017) were considered in our analysis and are displayed in the graph. 
-                We observe that PM2.5 levels are generally the highest in the Los Angeles region with average PM2.5 levels as high as 18 tons per year. 
-                Similarly, the central valley of California has also seen high levels of PM2.5 with average PM2.5 levels in the range of 12-17 tons per year. 
+                Only the zip codes which had an open school during the time period of our study (2000-2017) 
+                were considered in our analysis and are displayed in the graph. 
+                We observe that PM2.5 levels are generally the highest in Los Angeles county with average 
+                PM2.5 levels as high as 18 tons per year. 
+                Similarly, the central valley of California has also seen high levels of PM2.5 with 
+                average PM2.5 levels in the range of 12-17 tons per year. 
               </p>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
@@ -279,15 +292,25 @@
             <!-- <div class="column left"> -->
             <div class="col-lg-6">
               <p>
-                In order to predict the volume of PM2.5 at each school, 
-                we looked at the nearest 20 point sources of pollution and the amount of PM2.5 emited from each with wind data. 
-                We used the National Emissions Inventory (NEI) provided by the Environmental Protection Agency (EPA), 
-                which contains information on stationary pollution point sources and the amoun tof PM2.5 emitted. 
-                The pollution point sources primarily consist of large industrial facilities, power plants, airports, and commercial facilities. 
+                In order to predict the levels of PM2.5 at each school, we looked at the nearest 20 point 
+                sources of pollution and the amount of PM2.5 emited from each. 
+                These data come from the National Emissions Inventory (NEI) provided by the Environmental Protection Agency (EPA), 
+                which contains information on stationary pollution point sources and 
+                the amount of PM2.5 emitted measured in tons per year (TPY). 
+                The pollution point sources primarily consist of large industrial facilities, power plants, 
+                airports, and commercial facilities. 
               </p>
               <p>
-                The NEI list contains many point sources of insignificant volumes of PM2.5 emitted. 
-                Thus, we decided to filter the dataset to only use the pollution point sources with PM2.5 emissions above 4 tons per year (TPY).
+                The NEI list contains a wide variety of pollution point sources and the amounts of PM2.5 emitted. 
+                Some polluters emit over a thousand tons of PM2.5 per year, while others emit a very insignificant amount. 
+                In order to make sure we adequately captured the significant polluters, we decided to filter the dataset 
+                to only use the pollution point sources with PM2.5 emissions above 4 TPY.
+              </p>
+              <p>
+                This data visualization to the right maps these polluters, 
+                with larger dots representing those emitting higher amounts of PM2.5 each year. 
+                You can click and drag on the map to select a subset of polluters,
+                and the histogram will update to represent the subset you've selected. 
               </p>
             </div>
             <!-- <div class="column right"> -->
@@ -302,15 +325,16 @@
           <br><h3>Schools</h3>
           <div class="row content">
             <p>
-              The California schools dataset comes from the California School Campus Database (CSCD). 
+              The California schools data come from the California School Campus Database (CSCD). 
               The list contains over 10,000 California schools ranging from kindergarten to high school. 
               Each school contains information such as the date the school opened, its closing date if applicable, 
               school district, address, grades offered, and whether it's a magnet school. 
             </p>
             <p>
               An assumption we've made in our study is that every child attends a school in the same zip code as their home. 
-              We've used each patient's home zip code and assume their PM2.5 exposure is equal to what was measured at the school(s) in their zip code. 
-              Then by using the PM2.5 exposure amounts at each school, we can predict the quantity of selected medical outcomes. 
+              We've used each patient's home zip code and assume their PM2.5 exposure is equal to 
+              what was measured at the school(s) in their zip code. 
+              Our analysis uses the PM2.5 exposures measured at each school to predict the quantity of selected medical outcomes. 
             </p>
           </div>
         </div>
@@ -320,16 +344,16 @@
           <p>
             Population data come from the US Census Bureau. 
             The Census Bureau performs an official census every 10 years. 
-            Thus, we used these official census counts for the years 2000 and 2010. 
-            For the years 2001 through 2009, we linearly interpolated the populations for each individual zip code assuming a constant growth rate between the years 2000 through 2010. 
+            Thus, we used these official census counts for 2000 and 2010. 
+            Between years years 2001 through 2009, we linearly interpolated the populations for each individual zip code 
+            assuming a constant growth rate. 
             For the years 2011 through 2017, we used estimated census counts calculated by the American Community Survey (ACS). 
-            Every year, over 3.5 million US households are contacted to participate in the ACS. 
-            These survey results are then used to estimate population counts by zip code. 
+            The ACS contacts over 3.5 million US households every year and uses these results to estimate 
+            the population by zip code. 
           </p>
           <p>
-            It was important for us to use population data in our analysis
-            because we were interested in measuring the proportion of each zip code's population that had a given medical diagnosis. 
-            By using proportions instead of absolute counts, we are able to compare results across different zip codes more easily. 
+            We used the population data in each zip code to convert the sum of medical diagnoses, to a per capita rate. 
+            This allows us to compare the diagnosis rates across zip codes with varying population levels. 
           </p>
         </div>
 
@@ -349,61 +373,67 @@
         <div class="row content">
           <h3>Instrumental Variables Regression</h3>
           <div class="col-lg-12">
-            <p style="color:red">UPDATE: Correct the fixed effects in this section once we're sure on the ones we're using</p>
+            <p style="color:red">UPDATE: Correct the fixed effects in this section once we're sure about the ones we're using. Perhaps include some text wrapping for the latex also. </p>
             <p>
               We model each of our health outcomes using a two-stage least squares instrumental variables (2SLS IV) regression. 
-              This modeling technique involves a two-stage process:
+              The two modeling stages are as follows:
               <ol>
                 <li>Model PM2.5 using our instrument and fixed effects.</li>
-                <li>Model the number of positive medical diagnoses using this predicted PM2.5 and same fixed effects.</li>
+                <li>Model the number of medical diagnoses using this predicted PM2.5 and same fixed effects.</li>
               </ol>
-
-              A hospital visit in a given month for our selected medical conditions is not just a result of the PM2.5 levels in the same month, 
-              but rather a cumulation of PM2.5 exposure over several months. 
-              For this reason, we've decided to use a look back at the prior 9 month rolling average PM2.5 value for a given month
-              to predict the proceeding 3 month rolling average count of medical outcomes.
+              The medical diagnoses in our study are ones that develop over time. 
+              A hospital visit is likely due to a cumulation of PM2.5 exposure over several months. 
+              For this reason, we've decided to look back at the prior 9 month rolling average PM2.5 exposure 
+              to predict the proceeding 3 month rolling average frequency of medical outcomes.
+              We've applied this regression framework to each of our ten medical outcomes of interest. 
             </p>
               This process can be represented by the following notation:
-              <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 I + \beta_2 year + \beta_3 month + \beta_4 county + \epsilon \]</p>
-              <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \widehat{PM}_{2.5} + \delta_2 year + \delta_3 month + \delta_4 county + \epsilon \]</p>
+              <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 \kern 0.05em I + \beta_2 \kern 0.05em year + \beta_3 \kern 0.05em month + \beta_4 \kern 0.05em county + \beta_5 \kern 0.05em temperature + \beta_6 \kern 0.05em elevation + \beta_7 \kern 0.05em income + \beta_8 \kern 0.05em population + \beta_9 \kern 0.05em wspd_{avg} + \epsilon\]</p>
+              <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \kern 0.05em \widehat{PM}_{2.5} + \delta_2 \kern 0.05em year + \delta_3 \kern 0.05em month + \delta_4 \kern 0.05em county + \delta_5 \kern 0.05em temperature + \delta_6 \kern 0.05em elevation + \delta_7 \kern 0.05em income + \delta_8 \kern 0.05em population + \delta_9 \kern 0.05em wspd_{avg} + \epsilon\]</p>
               <p>
                 <ul>
                   <li>\( \widehat{PM}_{2.5} \) = the predicted PM2.5 9 month average for every zip code and month</li>
-                  <li>\( \beta_i \) = the first stage regression coefficient for the i'th variable</li>
-                  <li>\( \delta_i \) = the second stage regression coefficient for the i'th variable.</li>
+                  <li>\( \beta_i \) = the first stage regression coefficient for variable i</li>
+                  <li>\( \delta_i \) = the second stage regression coefficient variable i</li>
                 </ul>                
               </p>
               <p>
-                The instrument, \(I\), is calculated using several different variables involving wind, pollution, and distance variables.
-                We've considered the nearest 20 pollution point sources to each school, and for each, we've used their tons of PM2.5 emitted each year (TPY), distance to the school, 
+                The instrument, \(I\), is calculated using several different variables involving wind, 
+                pollution, and distance variables.
+                We've considered the nearest 20 pollution point sources to each school, 
+                and for each, we've used their PM2.5 emissions measured in tons per year (TPY), distance to the school, 
                 wind speed, and wind direction to compute this instrument.
               </p>
+
               <p>
-                \[I = \sum_{ps=1}^{3} \sum_{d_m=1}^{D_m} \theta_{zd_m} * TPY_{ps} * \frac{S_{zd_m}}{D_{ps}} \]
+                \[ I_{zmy} = \sum_{ps^{*}=1}^{15} \sum_{d_{m}=1}^{D_{m}}\sum_{H_{d}=1}^{24}\widetilde{\theta}_{downstream_{zd_{m}}} \times \widetilde{TPY}_{ps} \times \frac{\widetilde{S}_{zd_{m}}}{\widetilde{D}_{ps}} \]
               </p>
               <p>
                 <ul>
                   <li>\( z \) = zip code</li>
                   <li>\( m \) = month</li>
-                  <li>\( ps \) = pollution point source</li>
+                  <li>\( ps^{*} \) = pollution point source prefiltered to include only point sources with average TPY levels greater than 4</li>
                   <li>\( D_m \) = number of days in month</li>
                   <li>\( d_m \) = day of month</li>
+                  <li>\( H_d \) = hour of day</li>
+                  <li>\( \theta_{downstream_{zd_{m}}} \) = wind bearing in relation to each school</li>
                   <li>\( TPY \) = point source pollution output (tons per year)</li>
                   <li>\( S_{zd_m} \) = wind speed</li>
                   <li>\( D_{ps} \) = distance to pollution point source</li>
+                  <li>\( \sim \) = all variables containing a a tilde are normalized using standard scaler (distance, TPY) and/or min-max scaling</li>
                 </ul>
               </p>
             
             <br>
-            <p style="color:red">UPDATE: Insert matt's video (or gif) explaining the instrument</p>
-            <br>
+          
+            <h3>Instrument Demonstration</h3>
+              <p>
+                We've included a video which helps illustrate this instrument calculation
+                and how it's used to predict PM2.5 levels at each school. 
+                <br><br>
+                <p style="color:red">Optional section: Insert matt's video (or gif) explaining the instrument. Or just delete this section if that's too hard. </p>
+              </p>
 
-            <p>
-              We've applied this regression framework to each of our ten medical outcomes of interest. 
-              Our second-stage regression model predicts the number of positive medical diagnoses per 1,000 people using the pediatric population. 
-            </p>
-
-            
           </div>
         </div>
     </section><!-- End Modeling Section -->
@@ -419,11 +449,12 @@
               <h3 align="left">Stage 1 Regression</h3>
               <div class="col-lg-6">
                 <p align="left">
-                  The first stage regression model predicts a rolling 9 month average pm2.5 value for each zip code and month.
+                  The first stage regression model predicts a rolling 9 month average PM2.5 value for each zip code and month.
                   While this model includes several fixed-effects for its predictions, 
                   the primary variable of interest in this equation is our instrument, <i>I</i>. 
                   Because our instrument combines over 4 different measurements, its unit of measurement is uninterpretable. 
-                  However, the low p-value indicates that the model is very confident that the true impact of our instrument on PM2.5 is not 0. 
+                  However, the low p-value indicates that the model is very confident that the true impact 
+                  of our instrument on PM2.5 is not 0. 
                 </p>
               </div>
               <div class="col-lg-6 pt-4 pt-lg-0">
@@ -449,7 +480,12 @@
               <h3 align="left">Stage 2 Regression</h3>
 
               <p align="left">
-                The second stage regression model predicts the number of pediatric medical diagnoses seen per 1,000 children.
+                The second stage regression model predicts the number of pediatric medical diagnoses per 1,000 children.
+                We've chosen to highlight five medical outcome from our study in this table. 
+                For each medical outcome, we've included the summary statistics for both the predicted PM2.5 
+                value (\( \widehat{PM}_{2.5} \)) and the true PM2.5 value (\( PM_{2.5} \)). 
+
+                <p align="left" style="color:red">UPDATE: include commentary on how to interpret the coefficients and what the findings mean. Wait to do so after we're sure these are the final results. </p>
               </p>
               
               <br><br>
@@ -525,7 +561,7 @@
                   <p align="left">
                     After determining which medical outcomes are most related to PM2.5 through the instrumental variables regression framework, 
                     we conducted a counterfactual analysis to see how the predicted number of medical diagnoses would differ under various levels of PM2.5. 
-                    The purpose of the counterfactual analysis is to show how the predicted medical outcome would decrease under scenarios with lower PM2.5 values. 
+                    The purpose of the counterfactual analysis is to show how the predicted medical outcome would change under scenarios with lower PM2.5 values. 
                     We chose to conduct this counterfactual analysis on hematopoietic cancer because this medical outcome showed the most promising results from our instrumental variables regression. 
                   </p>
                   <br>
@@ -553,7 +589,7 @@
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0" align="left">
                   Our team had the opportunity to present our research at Stanford Unversity's 
-                    Maternal and Child Health Research Institute Symposium. 
+                    Maternal and Child Health Research Institute (MCHRI) Symposium . 
                     While there, we talked to others who had conducted similar research and gathered feedback about 
                     about our results. 
                     <br>
@@ -692,14 +728,13 @@
 
         <div class="section-title">
           <h2>Acknowledgements</h2>
-          <p>
+          <p align="left">
             Several subject matter experts and professors were instrumental in aiding the success of our project. 
             We'd like to thank <b>Cornelia Ilin, Ph.D.</b> for the project ideation, continual guidance throughout the process, 
             and for encouraging us to submit our abstract to Stanford University's Maternal and Child Health Research Institute Poster Session. 
             <b>Alberto Todeschini, Ph.D.</b> for his guidance and for encouraging us to present at UC Berkeley's AI Research (BAIR).
-            <b>Dr. Matthew Meyer</b> for helping us narrow down our list of pediatric medical diagnoses to study in our research. 
-            <b>Robert Davis, Ph.D.</b> for his expertise in bioclimatology and for helping us understand the factors for spreading PM2.5. 
-            
+            <b>Dr. Matthew Meyer</b> and <b>Dr. Kyle Enfield</b> of UVA health for helping us narrow down our list of pediatric medical diagnoses to study in our research. 
+            <b>Robert Davis, Ph.D.</b> for sharing his expertise in bioclimatology and for helping us understand the factors for spreading PM2.5. 
           </p>
         </div>
       </div>
