@@ -286,7 +286,7 @@
             <!-- <div class="column left"> -->
             <div class="col-lg-6">
               <p>
-                In order to predict the levels of PM2.5 at each school, we looked at the nearest 20 point 
+                In order to predict the levels of PM2.5 at each school, we looked at the nearest 15 point 
                 sources of pollution and the amount of PM2.5 emited from each. 
                 These data come from the National Emissions Inventory (NEI) provided by the Environmental Protection Agency (EPA), 
                 which contains information on stationary pollution point sources and 
@@ -351,13 +351,46 @@
           </p>
         </div>
         <br><hr><br>
-        <h2>Combined datasets</h2>
-        <p>
-          <p style="color:red">UPDATE: Maybe add matt's static map here? then include link to interactive version? Or maybe this section belongs after we introduce the instrument?</p>
-          
-        </p>
+        <h2>Combining Datasets</h2>
 
-      </div>
+        <!-- Static map from matt -->
+
+        <div class="row content">
+          <div class="column_unequal left_30">
+            <p align="left">
+              After collecting and cleaning data from our many sources, 
+              we joined them together so we could find nearby pollution point sources and wind measurements 
+              to each school. 
+              This map displays a snapshot of just one hour of data. 
+              Cyan points represent schools. 
+              Pollution sources are in red, with larger circles representing higher amounts of PM2.5. 
+              Grey arrows represent wind direction, with larger arrows representing higher wind speeds. 
+              The peach colored lines connect the nearest 15 pollution sources to each school. 
+            </p>
+          </div>
+          <div class="column_unequal right_70">
+            <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="HealthCAir Web Map" src="https://arcgis.com/apps/Embed/index.html?webmap=77eab1a0b6444a12a167cab7e6d925ec&extent=-125.1506,32.3716,-113.0436,41.9194&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe></div>
+          </div>
+        </div>
+        
+        <hr>
+        
+        <!-- schools, point sources, pm2.5 tableau -->
+
+        <div class="row content">
+          <div class="column_unequal left_30">
+            <p>
+              The schools, pollution sources, and pm2.5 levels can perhaps be 
+              digested more easily by viewing separate maps side by side. 
+              This visualization shows these quantites by zip code. 
+              
+            </p>
+          </div>
+            <div class="column_unequal right_70">
+              <div class='tableauPlaceholder' id='viz1670142556173' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ov&#47;Overview_of_Schools_PS_PM25&#47;OverviewofSchoolsPointSourcesPM2_5&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Overview_of_Schools_PS_PM25&#47;OverviewofSchoolsPointSourcesPM2_5' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ov&#47;Overview_of_Schools_PS_PM25&#47;OverviewofSchoolsPointSourcesPM2_5&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1670142556173');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+        </div>
+
     </section><!-- End datasets Section -->
 
 
@@ -402,7 +435,7 @@
               <p>
                 The instrument, \(I\), is calculated using several different variables involving wind, 
                 pollution, and distance variables.
-                We've considered the nearest 20 pollution point sources to each school, 
+                We've considered the nearest 15 pollution point sources to each school, 
                 and for each, we've used their PM2.5 emissions measured in tons per year (TPY), distance to the school, 
                 wind speed, and wind direction to compute this instrument.
               </p>
@@ -431,9 +464,8 @@
               <p>
                 We've included a video which helps illustrate this instrument calculation
                 and how it's used to predict PM2.5 levels at each school. 
-                <br><br>
-                <p style="color:red">Optional section: Insert matt's video (or gif) explaining the instrument. Or his argis screenshot w/ link to interactive version. Or just delete this section if that's too hard. </p>
               </p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/MuGUtg6DQV4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
           </div>
         </div>
@@ -735,8 +767,6 @@
               </div>
             </div>
           </div>
-
-          
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
