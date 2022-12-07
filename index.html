@@ -193,22 +193,22 @@
           <div class="row content">
             <div class="col-lg-6">
               <p>
-                Wind data forms the basis for constructing our instrument that predicts the amount of PM2.5 at each school 
-                based on the location of nearby pollution point sources. 
-                We find that as the wind blows more directly from a pollution source towards a school, 
-                we see higher levels of PM2.5 measurements at the school. 
+                Wind data forms the basis for constructing our instrument that predicts the amount of PM2.5 at each school. 
+                We find that as wind blows from a pollution source towards a school, 
+                we see higher levels of PM2.5 measurements.
               </p>
               <p>
                 The wind data used in our study come ERA5, which contains hourly wind observations 
                 measured every 31km across the globe. 
                 Each measurement provides information such as wind speed direction. 
-                We found the nearest wind measurement for every school and pollution source in our dataset and 
-                used this information to predict PM2.5 levels at each school. 
+                For each school and pollution point source, we find the nearest wind measurement 
+                and use this information to predict PM2.5 levels at each school. 
               </p>
               <p>
-                This diagram to the right shows the wind measurements that we used across the state of California. 
-                Faster wind speeds are represented by larger wind arrows. 
-                The purple points on the map represent each school used in our study. 
+                This diagram to the right shows a sample of a few hours of wind 
+                measurements across California. 
+                Faster wind speeds are represented by larger wind arrows and 
+                purple points on the map represent each school used in our study. 
               </p>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0">
@@ -230,7 +230,7 @@
             predict the proportion of the population experiencing certain medical diseases. 
           </p>
           <p>
-            Because we are not specialists in the medical field, we consulted with medical doctors 
+            Because we are not medical specialists, we consulted with medical doctors 
             to better understand which pediatric health outcomes would be the most plausible to have a causal link with PM2.5. 
             After our discussions and research, we decided to focus on the following pediatric medical conditions in our study:
 
@@ -256,7 +256,7 @@
             <div class="col-lg-6">
               <p>
                 PM2.5 data come from the Environmental Protection Agency (EPA). 
-                The data are collected using chemical transport modeling, satellite remote sensing, and ground-based monitoring. 
+                The EPA collects these data using chemical transport modeling, satellite remote sensing, and ground-based monitoring. 
                 <!-- source: https://sites.wustl.edu/acag/datasets/historical-pm2-5-across-north-america/ -->
               </p>
               <p>
@@ -325,9 +325,8 @@
               school district, address, grades offered, and whether it's a magnet school. 
             </p>
             <p>
-              An assumption we've made in our study is that every child attends a school in the same zip code as their home. 
-              We've used each patient's home zip code and assume their PM2.5 exposure is equal to 
-              what was measured at the school(s) in their zip code. 
+              An assumption we've made in our study is that every child attends a school in the same zip code as 
+              their home's zip code and has the same PM2.5 pollution exposure. 
               Our analysis uses the PM2.5 exposures measured at each school to predict the quantity of selected medical outcomes. 
             </p>
           </div>
@@ -383,7 +382,6 @@
               Cyan points represent schools. 
               Pollution sources are in red, with larger circles representing higher amounts of PM2.5. 
               Grey arrows represent wind direction, with larger arrows representing higher wind speeds. 
-              The peach colored lines connect the nearest 15 pollution sources to each school. 
             </p>
           </div>
           <!-- <div class="column_unequal right_70"> -->
@@ -399,10 +397,9 @@
         <div class="row content">
           <div class="column left">
             <p>
-              The schools, pollution sources, and pm2.5 levels can perhaps be 
+              The schools, pollution sources, and PM2.5 levels can be 
               digested more easily by viewing separate maps side by side. 
               This visualization shows these quantites by zip code. 
-              
             </p>
           </div>
             <div class="column right">
@@ -424,7 +421,6 @@
         <div class="row content">
           <h3>Instrumental Variables Regression</h3>
           <div class="col-lg-12">
-            <p style="color:red">UPDATE: Correct the fixed effects in this section once we're sure about the ones we're using.</p>
             <p>
               We model each of our health outcomes using a two-stage least squares instrumental variables (2SLS IV) regression. 
               The two modeling stages are as follows:
@@ -432,9 +428,9 @@
                 <b><li>Model PM2.5 using our instrument and fixed effects:</li></b>
                   <p>\[ \widehat{PM}_{2.5}=\beta_0 + \beta_1 \kern 0.05em I + \beta_2 \kern 0.05em year + \beta_3 \kern 0.05em month + \beta_4 \kern 0.05em county + \beta_5 \kern 0.05em temperature \]</p>
                   <p>\[ \kern 1.5em + \beta_6 \kern 0.05em elevation + \beta_7 \kern 0.05em income + \beta_8 \kern 0.05em population + \beta_9 \kern 0.05em wspd_{avg} + \epsilon \]</p>
-                <b><li>Model the number of medical diagnoses using this predicted PM2.5 and same fixed effects:</li></b>
-                  <p>\[ Y = \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \kern 0.05em \widehat{PM}_{2.5} + \delta_2 \kern 0.05em year + \delta_3 \kern 0.05em month + \delta_4 \kern 0.05em county + \delta_5 \kern 0.05em temperature  \]</p>
-                  <p>\[ \kern 5.1em + \delta_6 \kern 0.05em elevation + \delta_7 \kern 0.05em income + \delta_8 \kern 0.05em population + \delta_9 \kern 0.05em wspd_{avg} + \epsilon \]</p>
+                <b><li>Model the 12 month change in medical diagnoses using this predicted PM2.5 and same fixed effects:</li></b>
+                  <p>\[ Y = \Delta \frac{\sum Diagnoses}{Pop_{zipcode, 0-19}} = \delta_0 + \delta_1 \kern 0.05em \widehat{PM}_{2.5} + \delta_2 \kern 0.05em year + \delta_3 \kern 0.05em month + \delta_4 \kern 0.05em county + \delta_5 \kern 0.05em temperature  \]</p>
+                  <p>\[ \kern 6em + \delta_6 \kern 0.05em elevation + \delta_7 \kern 0.05em income + \delta_8 \kern 0.05em population + \delta_9 \kern 0.05em wspd_{avg} + \epsilon \]</p>
               </ol>
             </p>
             <p>
@@ -445,10 +441,9 @@
               </ul>                
             </p>
             <p>
-              The medical diagnoses in our study are ones that develop over time&mdash;a
-              hospital visit is likely due to a cumulation of PM2.5 exposure over several months. 
-              For this reason, we've decided to look back at the prior 9 month rolling average PM2.5 exposure 
-              to predict the proceeding 3 month rolling average frequency of medical outcomes.
+              The medical diagnoses in our study are likely to develop over long term exposures to PM2.5. 
+              This is why we used a rolling 9 month average of PM2.5 to predict each medical diagnosis. 
+              The medical outcomes are measured as the change in the number of diagnoses per 1,000 children over a 12 month period. 
               We've applied this regression framework to each of our ten medical outcomes of interest. 
             </p>
               <p>
@@ -528,38 +523,34 @@
             <br><br><br>
 
             <div class="row content">
-              
               <h3 align="left">Stage 2 Regression</h3>
-
+              <div class="col-lg-12">
               <p align="left">
-                The second stage regression model predicts the number of pediatric medical diagnoses per 1,000 children.
-                We've chosen to highlight five medical outcome from our study in this table. 
+                The medical outcomes are measured as the change in the number of diagnoses per 1,000 children over a 12 month period. 
+                We've chosen to highlight five medical outcomes from our study in this table. 
                 For each medical outcome, we've included the summary statistics for both the predicted PM2.5 
                 value (\( \widehat{PM}_{2.5} \)) and the true PM2.5 value (\( PM_{2.5} \)). 
-                <br>
-                <p align="left" style="color:red"><br>UPDATE: include commentary on how to interpret the coefficients and what the findings mean. Wait to do so after we're sure these are the final results. <br></p>
               </p>
+              <br>
               <p align="left">
-                We observe that \( \widehat{PM}_{2.5} \) is not a statistically significant predictor 
-                of any of our selected medical outcomes at the 95% confidence interval level. 
-                As an example, we can interpret the coefficient for hematopoietic cancers to be that as the rolling 9 month average 
-                of PM2.5 rises by 1 TPY, we expect the following 3 month rolling average pediatric hematopoietic cancer 
-                case rate to rise by 0.0209 cases per 1,000 children. The model is 95% confident that the true impact 
-                of PM2.5 lies between -0.0138 and 0.0556. 
-                <br>
+                We observe that \( \widehat{PM}_{2.5} \) is a statistically significant predictor 
+                of blood vessel diseases and all malignant cancers at the 95% confidence interval level. 
+                As an example, we can interpret the coefficient for blood vessel diseases to be that 
+                as the rolling 9 month average PM2.5 rises by 1 TPY, we expect the annual change in 
+                blood vessel diseases to increase by 0.0072 cases per 1,000 children. 
+                The model is 95% confident that the true impact of PM2.5 lies between 0.0019 and 0.0135. 
               </p>
-              
+              <br>
               <p align="left">
-                <br>
-                The statistics under the \( PM_{2.5} \) section show the results of a correlational study using the same 
-                regression framework as the 2nd stage regression, but using the true PM2.5 value as the predictor. 
+                The statistics under the \( PM_{2.5} \) section show the results of the OLS regression using the same 
+                fixed effects as before, but by substituing the predicted PM2.5 with the true PM2.5 value. 
                 Doing so produces a much more biased estimate of the impact of PM2.5 than the instrumental variable results. 
-                Many coefficients from this regression are negative, which means that higher PM2.5 levels are expected
-                to reduce the number of cases of these medical outcomes. 
-                <br>
+                Many coefficients from this regression are not statistically significant with wide confidence intervals. 
+                <br><br>
               </p>
+              </div>
+
               
-              <br><br>
 
               <table>
                 <tr>
@@ -577,49 +568,49 @@
                   <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
                 </tr>
                 <tr>
-                  <td><p align="left">Hematopoietic Cancers</p></td>
-                  <td>0.0209</td>
-                  <td>0.231</td>
-                  <td>[-0.0138, 0.0556]</td>
-                  <td>-0.00314</td>
-                  <td>0.190</td>
-                  <td>[-0.0079, 0.0016]</td>
-                </tr>
-                <tr>
-                  <td><p align="left">Cardioresp. Cancer</p></td>
-                  <td>0.0047</td>
-                  <td>0.251</td>
-                  <td>[-0.00352, 0.0129]</td>
-                  <td>-0.00256</td>
-                  <td>0.0375</td>
-                  <td>[-0.0050, -0.00016]</td>
+                  <td><p align="left">Blood Vessel Diseases</p></td>
+                  <td>0.00772</td>
+                  <td>0.00993</td>
+                  <td>[0.0019, 0.0135]</td>
+                  <td>0.00035</td>
+                  <td>0.825</td>
+                  <td>[-0.0028, 0.0035]</td>
                 </tr>
                 <tr>
                   <td><p align="left">All Malignant Cancers</p></td>
-                  <td>0.0127</td>
-                  <td>0.703</td>
-                  <td>[-0.0539, 0.0794]</td>
-                  <td>0.00108</td>
-                  <td>0.739</td>
-                  <td>[-0.0054, 0.0076]</td>
+                  <td>0.00788</td>
+                  <td>0.0372</td>
+                  <td>[0.00048, 0.0153]</td>
+                  <td>0.000677</td>
+                  <td>0.145</td>
+                  <td>[-0.0024, 0.0016]</td>
                 </tr>
                 <tr>
-                  <td><p align="left">Blood Vessel Diseases</p></td>
-                  <td>0.0011</td>
-                  <td>0.946</td>
-                  <td>[-0.0312, 0.0334]</td>
-                  <td>-0.00184</td>
-                  <td>0.105</td>
-                  <td>[-0.0041, 0.00040]</td>
+                  <td><p align="left">Cardioresp. Cancer</p></td>
+                  <td>0.00250</td>
+                  <td>0.412</td>
+                  <td>[-0.0037, 0.0086]</td>
+                  <td>0.00078</td>
+                  <td>0.459</td>
+                  <td>[-0.0014, 0.0029]</td>
                 </tr>
                 <tr>
-                  <td><p align="left">Cardioresp. Disease</p></td>
-                  <td>-0.995</td>
-                  <td>0.061</td>
-                  <td>[-2.037, 0.0459]</td>
-                  <td>-0.01633</td>
+                  <td><p align="left">Type 1 Diabetes</p></td>
+                  <td>0.00383</td>
+                  <td>0.475</td>
+                  <td>[-0.0069, 0.0145]</td>
+                  <td>0.00038</td>
+                  <td>0.195</td>
+                  <td>[-0.0020, 0.0095]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Injuries/Accidents</p></td>
+                  <td>0.01039</td>
+                  <td>0.868</td>
+                  <td>[-0.114, 0.135]</td>
+                  <td>0.00795</td>
                   <td>0.811</td>
-                  <td>[-0.153, 0.120]</td>
+                  <td>[-0.053, 0.069]</td>
                 </tr>
               </table>
               
@@ -660,12 +651,9 @@
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0" align="left">
                   Our team had the opportunity to present our research at Stanford Unversity's 
-                    Maternal and Child Health Research Institute (MCHRI) Symposium. 
-                    While there, we talked to others who had conducted similar research and gathered feedback about 
-                    our results. 
-                    <br>
-                    <br>
-                    <p style="color:red">UPDATE: add some more commentary here, it feels a little bare. But not sure what else to say yet</p> 
+                  Maternal and Child Health Research Institute (MCHRI) Symposium. 
+                  While there, we talked to others who had conducted similar research and gathered feedback about 
+                  our results. 
                 </div>
             </div>
 
