@@ -99,7 +99,7 @@
 
             <p>
               Air pollution is a pervasive, global issue worsening due to climate change, increasing population, deforestation, and other causes. 
-              Among the many types of air pollution, PM2.5 is known to be most deadly (Cardenas 2021) and contributed to over 4 million deaths worldwide in 2019 (GBD 2019 Risk Factor Collaborators).
+              Among the many types of air pollution, PM2.5 is known to be the most deadly (Cardenas 2021) and contributed to over 4 million deaths worldwide in 2019 (GBD 2019 Risk Factor Collaborators).
               <!-- source 1: https://www.mcgill.ca/newsroom/channels/news/air-pollution-silent-killer-called-pm25-329428#:~:text=Small%20but%20deadly,inside%20a%20red%20blood%20cell. -->
               <!-- source 2 original paper: https://www.thelancet.com/action/showPdf?pii=S0140-6736%2820%2930752-2 -->
               <!-- source 2 from alberto: https://www.stateofglobalair.org/health/pm -->
@@ -199,7 +199,7 @@
               </p>
               <p>
                 The wind data used in our study come ERA5, which contains hourly wind observations 
-                measured every 31km across the globe. 
+                measured every 31 km across the globe. 
                 Each measurement provides information such as wind speed direction. 
                 For each school and pollution point source, we find the nearest wind measurement 
                 and use this information to predict PM2.5 levels at each school. 
@@ -255,9 +255,11 @@
           <div class="row content">
             <div class="col-lg-6">
               <p>
-                PM2.5 data come from the Environmental Protection Agency (EPA). 
-                The EPA collects these data using chemical transport modeling, satellite remote sensing, and ground-based monitoring. 
+                PM2.5 data come from Washington University in St. Louis. 
+                The data are collected using chemical transport modeling, 
+                satellite remote sensing, and ground-based monitoring. 
                 <!-- source: https://sites.wustl.edu/acag/datasets/historical-pm2-5-across-north-america/ -->
+                <!-- source2: https://sites.wustl.edu/acag/datasets/surface-pm2-5/ -->
               </p>
               <p>
                 This data visualization shows the average PM2.5 levels from 2000 through 2017. 
@@ -287,7 +289,7 @@
             <div class="col-lg-6">
               <p>
                 In order to predict the levels of PM2.5 at each school, we looked at the nearest 15 point 
-                sources of pollution and the amount of PM2.5 emited from each. 
+                sources of pollution and the amount of PM2.5 emitted from each. 
                 These data come from the National Emissions Inventory (NEI) provided by the Environmental Protection Agency (EPA), 
                 which contains information on stationary pollution point sources and 
                 the amount of PM2.5 emitted measured in tons per year (TPY). 
@@ -338,7 +340,7 @@
             Population data come from the US Census Bureau. 
             The Census Bureau performs an official census every 10 years. 
             Thus, we used these official census counts for 2000 and 2010. 
-            Between years years 2001 through 2009, we linearly interpolated the populations for each individual zip code 
+            Between the years 2001 through 2009, we linearly interpolated the populations for each individual zip code 
             assuming a constant growth rate. 
             For the years 2011 through 2017, we used estimated census counts calculated by the American Community Survey (ACS). 
             The ACS contacts over 3.5 million US households every year and uses these results to estimate 
@@ -381,7 +383,7 @@
               This map displays a snapshot of just one hour of data. 
               Cyan points represent schools. 
               Pollution sources are in red, with larger circles representing higher amounts of PM2.5. 
-              Grey arrows represent wind direction, with larger arrows representing higher wind speeds. 
+              Gray arrows represent wind direction, with larger arrows representing higher wind speeds. 
             </p>
           </div>
           <!-- <div class="column_unequal right_70"> -->
@@ -399,7 +401,7 @@
             <p>
               The schools, pollution sources, and PM2.5 levels can be 
               digested more easily by viewing separate maps side by side. 
-              This visualization shows these quantites by zip code. 
+              This visualization shows these quantities by zip code. 
             </p>
           </div>
             <div class="column right">
@@ -444,6 +446,7 @@
               The medical diagnoses in our study are likely to develop over long term exposures to PM2.5. 
               This is why we used a rolling 9 month average of PM2.5 to predict each medical diagnosis. 
               The medical outcomes are measured as the change in the number of diagnoses per 1,000 children over a 12 month period. 
+              Where the medical counts in a given month are measured as the sum of total diagnoses over a 3 month period. 
               We've applied this regression framework to each of our ten medical outcomes of interest. 
             </p>
               <p>
@@ -537,13 +540,13 @@
                 of blood vessel diseases and all malignant cancers at the 95% confidence interval level. 
                 As an example, we can interpret the coefficient for blood vessel diseases to be that 
                 as the rolling 9 month average PM2.5 rises by 1 TPY, we expect the annual change in 
-                blood vessel diseases to increase by 0.0072 cases per 1,000 children. 
+                diagnoses of blood vessel diseases to increase by 0.0072 cases per 1,000 children.
                 The model is 95% confident that the true impact of PM2.5 lies between 0.0019 and 0.0135. 
               </p>
               <br>
               <p align="left">
                 The statistics under the \( PM_{2.5} \) section show the results of the OLS regression using the same 
-                fixed effects as before, but by substituing the predicted PM2.5 with the true PM2.5 value. 
+                fixed effects as before, but by substituting the predicted PM2.5 with the true PM2.5 value. 
                 Doing so produces a much more biased estimate of the impact of PM2.5 than the instrumental variable results. 
                 Many coefficients from this regression are not statistically significant with wide confidence intervals. 
                 <br><br>
@@ -650,7 +653,7 @@
                   </p>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0" align="left">
-                  Our team had the opportunity to present our research at Stanford Unversity's 
+                  Our team had the opportunity to present our research at Stanford University's 
                   Maternal and Child Health Research Institute (MCHRI) Symposium. 
                   While there, we talked to others who had conducted similar research and gathered feedback about 
                   our results. 
