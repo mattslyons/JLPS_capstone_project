@@ -243,7 +243,6 @@
               <li>Blood diseases</li>
               <li>Blood vessel diseases</li>
               <li>Both blood and blood vessel diseases</li>
-              <li>Respiratory diseases (used as a control diagnosis for which we expect to see strong significance)</li>
               <li>Injuries (used as a control diagnosis for which we expect to see no significance)</li>
             </ol>
           </p>
@@ -255,7 +254,8 @@
           <div class="row content">
             <div class="col-lg-6">
               <p>
-                PM2.5 data come from Washington University in St. Louis. 
+                PM2.5 data come from NASA MODIS, MISR, and SeaWIFS instruments 
+                and were assembled by researchers at Washington University in St. Louis. 
                 The data are collected using chemical transport modeling, 
                 satellite remote sensing, and ground-based monitoring. 
                 <!-- source: https://sites.wustl.edu/acag/datasets/historical-pm2-5-across-north-america/ -->
@@ -321,15 +321,16 @@
           <br><h3>Schools</h3>
           <div class="row content">
             <p>
-              The California schools data come from the California School Campus Database (CSCD). 
-              The list contains over 10,000 California schools ranging from kindergarten to high school. 
-              Each school contains information such as the date the school opened, its closing date if applicable, 
-              school district, address, grades offered, and whether it's a magnet school. 
+              The California schools data come from both the California Department of Education and
+              the California School Campus Database (CSCD), which supplemented the state data with better campus
+              centroid information. The data set contains over 10,000 California schools ranging from kindergarten 
+              to high school. Each school contains information such as the date the school opened, its closing  
+              date if applicable, school district, address, and grades offered.
             </p>
             <p>
-              An assumption we've made in our study is that every child attends a school in the same zip code as 
-              their home's zip code and has the same PM2.5 pollution exposure. 
-              Our analysis uses the PM2.5 exposures measured at each school to predict the quantity of selected medical outcomes. 
+              One simplifying assumption we have made in our study is to assume that every child attends 
+              a school in the same zip code as their home and has the same PM2.5 pollution exposure. 
+              Our analysis uses the PM2.5 exposures measured at each school to predict the diagnosis rate of selected medical outcomes. 
             </p>
           </div>
         </div>
@@ -458,7 +459,7 @@
               </p>
 
               <p>
-                \[ I_{zmy} = \sum_{ps^{*}=1}^{15} \sum_{d_{m}=1}^{D_{m}}\sum_{H_{d}=1}^{24}\widetilde{\theta}_{downstream_{zd_{m}}} \times \widetilde{TPY}_{ps} \times \frac{\widetilde{S}_{zd_{m}}}{\widetilde{D}_{ps}} \]
+                \[ I_{zmy} = \sum_{ps^{*}=1}^{15} \sum_{d_{m}=1}^{D_{m}}\sum_{H_{d}=1}^{24}\theta_{downstream_{zd_{m}}} \times \widetilde{TPY}\kern -0.2em_{ps} \times S_{zd_{m}} \]
               </p>
               <p>
                 <ul>
@@ -468,10 +469,8 @@
                   <li>\( d_m \) = day of month</li>
                   <li>\( H_d \) = hour of day</li>
                   <li>\( \theta_{downstream_{zd_{m}}} \) = wind bearing in relation to each school</li>
-                  <li>\( TPY \) = point source pollution output (tons per year)</li>
+                  <li>\( \widetilde{TPY}\kern -0.2em_{ps} \) = point source pollution output (tons per year), scaled using standard scaler, followed by min-max scaler</li>
                   <li>\( S_{zd_m} \) = wind speed</li>
-                  <li>\( D_{ps} \) = distance to pollution point source</li>
-                  <li>\( \sim \) = all variables containing a tilde are normalized using standard scaler (distance, TPY) and/or min-max scaling</li>
                 </ul>
               </p>
             
@@ -503,21 +502,36 @@
                   While this model includes several fixed-effects for its predictions, 
                   the primary variable of interest in this equation is our instrument, <i>I</i>. 
                   Because our instrument combines 4 different variables, its unit of measurement is uninterpretable. 
-                  However, the low p-value indicates that the model is very confident that the true impact 
+                  However, the low <i>p</i>-value indicates that the model is very confident that the true impact 
                   of our instrument on PM2.5 is not 0. 
+                </p>
+                <br>
+                <p align="left">
+                  To examine the strength of our instrument, we ran an F test to measure the confidence that our instrument was able to improve PM2.5 predictions over using the fixed effects alone. Generally, an instrument is considered to be sufficiently strong if the F-statistic is greater than 10. With an F-statistic of over 1,000, we can be confident our instrument is helping us predict PM2.5 values more accurately.
                 </p>
               </div>
               <div class="col-lg-6 pt-4 pt-lg-0">
                 <table>
                   <tr>
                     <th style="background-color: rgb(56,80,126); color:white">Instrument Coefficient</th>
-                    <th style="background-color: rgb(56,80,126); color:white">P-value</th>
+                    <th style="background-color: rgb(56,80,126); color:white"><i>p</i>-value</th>
                     <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
                   </tr>
                   <tr>
                     <td>-0.000107</td>
                     <td>4.02 e-07</td>
                     <td>[-0.00015, -0.00007]</td>
+                  </tr>
+                </table>
+                <br><br>
+                <table>
+                  <tr>
+                    <th style="background-color: rgb(56,80,126); color:white">F-Statistic</th>
+                    <th style="background-color: rgb(56,80,126); color:white"><i>p</i>-value</th>
+                  </tr>
+                  <tr>
+                    <td>1314.9</td>
+                    <td>3.41 e-287</td>
                   </tr>
                 </table>
               </div>
@@ -564,10 +578,10 @@
                 <tr>
                   <!-- <th style="background-color: rgb(56,80,126); color:white"></th> -->
                   <th style="background-color: rgb(56,80,126); color:white">Coefficient</th>
-                  <th style="background-color: rgb(56,80,126); color:white">P-value</th>
+                  <th style="background-color: rgb(56,80,126); color:white"><i>p</i>-value</th>
                   <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
                   <th style="background-color: rgb(56,80,126); color:white">Coefficient</th>
-                  <th style="background-color: rgb(56,80,126); color:white">P-value</th>
+                  <th style="background-color: rgb(56,80,126); color:white"><i>p</i>-value</th>
                   <th style="background-color: rgb(56,80,126); color:white">95% Confidence Interval</th>
                 </tr>
                 <tr>
@@ -605,6 +619,42 @@
                   <td>0.00038</td>
                   <td>0.195</td>
                   <td>[-0.0020, 0.0095]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Non-Blood Cancers</p></td>
+                  <td>-0.00129</td>
+                  <td>0.718</td>
+                  <td>[-0.0084, 0.0058]</td>
+                  <td>0.00028</td>
+                  <td>0.183</td>
+                  <td>[-0.0014, 0.0070]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Blood Cancers</p></td>
+                  <td>0.00782</td>
+                  <td>0.227</td>
+                  <td>[-0.0050, 0.021]</td>
+                  <td>0.00517</td>
+                  <td>0.148</td>
+                  <td>[-0.0019, 0.0012]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Blood Diseases</p></td>
+                  <td>-0.00530</td>
+                  <td>0.131</td>
+                  <td>[-0.0122, 0.0016]</td>
+                  <td>0.00291</td>
+                  <td>0.234</td>
+                  <td>[-0.0019, 0.0078]</td>
+                </tr>
+                <tr>
+                  <td><p align="left">Blood & B.V. Diseases</p></td>
+                  <td>-0.00121</td>
+                  <td>0.750</td>
+                  <td>[-0.0088, 0.0064]</td>
+                  <td>0.00238</td>
+                  <td>0.369</td>
+                  <td>[-0.0029, 0.0077]</td>
                 </tr>
                 <tr>
                   <td><p align="left">Injuries/Accidents</p></td>
@@ -665,7 +715,7 @@
                   Our team had the opportunity to present our research at Stanford University's 
                   Maternal and Child Health Research Institute (MCHRI) Symposium. 
                   While there, we talked to others who had conducted similar research and gathered feedback about 
-                  our results. 
+                  our results. We are grateful to our advisors for recommending that we submit our work to the symposium!
                 </div>
             </div>
 
@@ -815,11 +865,11 @@
           <h2>Acknowledgements</h2>
           <p align="left">
             Several subject matter experts and professors were instrumental in aiding the success of our project. 
-            We'd like to thank <b>Cornelia Ilin, Ph.D.</b> for the project ideation, continual guidance throughout the process, 
+            We'd like to thank <a href="https://www.ischool.berkeley.edu/people/cornelia-ilin"><b>Cornelia Ilin, Ph.D.</b></a> for the project ideation, continual guidance throughout the process, 
             and for encouraging us to submit our abstract to Stanford University's Maternal and Child Health Research Institute Poster Session. 
-            <b>Alberto Todeschini, Ph.D.</b> for his guidance and for encouraging us to present at UC Berkeley's AI Research (BAIR).
-            <b>Dr. Matthew Meyer</b> and <b>Dr. Kyle Enfield</b> of UVA health for helping us narrow down our list of pediatric medical diagnoses to study in our research. 
-            <b>Robert Davis, Ph.D.</b> for sharing his expertise in bioclimatology and for helping us understand the factors for spreading PM2.5. 
+            <a href="https://www.ischool.berkeley.edu/people/alberto-todeschini"><b>Alberto Todeschini, Ph.D.</b></a> for his guidance and for encouraging us to present at UC Berkeley's AI Research (BAIR).
+            <a href="https://uvahealth.com/findadoctor/profile/matthew-j-meyer"><b>Dr. Matthew Meyer</b></a> and <a href="https://uvahealth.com/findadoctor/profile/kyle-b-enfield"><b>Dr. Kyle Enfield</b></a> of UVA Health for helping us narrow down our list of pediatric medical diagnoses to study in our research. 
+            <a href="https://evsc.as.virginia.edu/people/profile/red3u"><b>Robert Davis, Ph.D.</b></a> for sharing his expertise in bioclimatology and for helping us understand the factors for spreading PM2.5. 
           </p>
         </div>
       </div>
