@@ -363,11 +363,11 @@
         }
         
         .left {
-          width: 40%;
+          width: 35%;
         }
         
         .right {
-          width: 60%;
+          width: 65%;
         }
         </style>
 
@@ -621,27 +621,36 @@
             <br><br><br>
 
             <h3 align="left">Counterfactual Analysis</h3>
-              <div class="row content">
-                <div class="col-lg-6">
-                  <p align="left">
-                    After determining which medical outcomes are most related to PM2.5 through the instrumental variables regression framework, 
+            <div class="row content">
+              <!-- <div class="column_unequal left_30"> -->
+              <div class="column left">
+                <p align="left">
+                  After determining which medical outcomes are most related to PM2.5 through the instrumental variables regression framework, 
                     we conducted a counterfactual analysis to see how the predicted number of medical diagnoses would differ under various levels of PM2.5. 
                     The purpose of the counterfactual analysis is to show how the predicted medical outcome would change under scenarios with lower PM2.5 values. 
-                    We chose to conduct this counterfactual analysis on hematopoietic cancer because this medical outcome showed the most promising results from our instrumental variables regression. 
-                  </p>
-                  <br>
-                  <p align="left">
-                    In order to make these predictions for the counterfactual analysis, we used XGBoost. 
-                    XGBoost allows us to model the nonlinear relationships between our variables which provides an advantage over OLS.
-                    We first used XGBoost to predict PM2.5 values in the first stage regression, with the same fixed effects that we used in our two-stage OLS model. 
-                    Next, we used these predicted PM2.5 values with the same fixed effects to train an XGBoost model to predict hematopoietic cancer. 
-                    Then we altered the test data by decreasing the PM2.5 values by certain percentages to see how the hematopoietic cancer cases would change. 
-                  </p>
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
-                  <p style="color:red">UPDATE: insert sweet looking tableau plot here</p>
-                </div>
+                    We chose to conduct this counterfactual analysis on blood vessel disease because this medical outcome showed statistically significant results
+                    from our instrumental variables regression. 
+                </p>
+                <br>
+                <p align="left">
+                  In order to make these predictions for the counterfactual analysis, we used XGBoost. 
+                  XGBoost allows us to model the nonlinear relationships between our variables which provides an advantage over OLS.
+                  We first used XGBoost to predict PM2.5 values in the first stage regression, with the same fixed effects that we used in our two-stage OLS model. 
+                  Next, we used these predicted PM2.5 values with the same fixed effects to train an XGBoost model to predict blood vessel disease. 
+                  Then we altered the test data by decreasing the PM2.5 values by certain percentages to see how the blood vessel disease cases would change. 
+                </p>
+                <br>
+                <p align="left">
+                  The choropleth maps to the right show the PM2.5 levels in red. The zip codes that show the 
+                  biggest decreases in blood vessel outcomes as PM2.5 levels decrease are highlighted in blue. 
+                </p>
+              </div>
+              <!-- <div class="column_unequal right_70"> -->
+              <div class="column right">
+                <div class='tableauPlaceholder' id='viz1670486679350' style='position: relative'><noscript><a href='#'><img alt='Counterfactual Changes in Average Health Outcomes ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;UC&#47;UCBerkeleyDataSci210Fall2022HealthCAirCounterfactualPlotBloodVesselDiseases&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='UCBerkeleyDataSci210Fall2022HealthCAirCounterfactualPlotBloodVesselDiseases&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;UC&#47;UCBerkeleyDataSci210Fall2022HealthCAirCounterfactualPlotBloodVesselDiseases&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1670486679350');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+              </div>
             </div>
+            
 
             <br><br><br>
 
